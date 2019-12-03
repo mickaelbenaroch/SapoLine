@@ -2,7 +2,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class HttpServiceService {
@@ -14,7 +13,7 @@ export class HttpServiceService {
   //#region Lifecycle Hooks
   public constructor(
     protected http: HttpClient,) {
-      this.apiUrl = environment.baseUrl;
+      this.apiUrl = "https://sapoappapi.herokuapp.com/";
   }
   //#endregion
 
