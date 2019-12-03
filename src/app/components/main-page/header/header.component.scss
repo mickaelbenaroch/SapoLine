@@ -1,0 +1,38 @@
+.envelop {
+    background-color: #282828;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    .div-1 {
+        display: flex;
+        flex-direction: column;
+        background-color: #696969;
+        border-radius: 50%;
+        width: 135px;
+        height: 135px;
+        align-items: center;
+        padding-top: 5px;
+        .logo {
+            width: 60px;
+            height: 60px;
+        }
+        .title {
+            font-family: 'Amatic SC', cursive;
+            color: wheat;
+            font-size: 26px;
+            text-align: center;
+        }
+        .sub-title {
+            font-family: 'Shadows Into Light', cursive;
+            font-size: 13px;
+            text-align: center;
+            color: aquamarine;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .envelop {
+        justify-content: center;
+    }
+  }
