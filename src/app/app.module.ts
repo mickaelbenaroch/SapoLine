@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/main-page/header/header.component'
 import { FooterComponent } from './components/main-page/footer/footer.component';
 import { HttpServiceService } from './services/http-service/http-service.service';
 import { GaleryComponent } from './components/main-page/galery/galery.component';
+import { MenuComponent } from './components/main-page/menu/menu.component';
 
 const appRoutes: Routes = [
   { path: '' , component: MainPageComponent},
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
     MainPageComponent,
     HeaderComponent,
     FooterComponent,
-    GaleryComponent
+    GaleryComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+.envelop {
+    position: absolute;
+    z-index: 99999999;
+    display: -webkit-box;
+    display: flex;
+    justify-content: space-around;
+    left: 28%;
+    width: 70%;
+    .circle {
+        height: 87px;
+        width: 87px;
+        //background-color: darkgrey;
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        span {
+            font-size: 18px;
+            align-self: center;
+            color: white;
+            font-weight: bold;
+            font-family: 'Amatic SC', cursive;
+        }
+    }
+}
