@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CategoryEnum } from 'src/app/enums/categories-enum';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
+  @Output() menuClickEvent: EventEmitter<CategoryEnum> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
+  enterItem(item: CategoryEnum): void {
+    if (!item) {
+      console.log('Error on click Menu Item');
+      return;
+    } else {
+      switch(item) {
+        case CategoryEnum.Shoes:
+          this.menuClickEvent.emit(CategoryEnum.Shoes);
+          break;
+        case CategoryEnum.PantsAndBottoms:
+          this.menuClickEvent.emit(CategoryEnum.PantsAndBottoms);
+          break;
+        case CategoryEnum.ShirtsAndTops:
+          this.menuClickEvent.emit(CategoryEnum.ShirtsAndTops);    
+          break;
+        case CategoryEnum.CoatsAndJackets:
+          this.menuClickEvent.emit(CategoryEnum.CoatsAndJackets);  
+        break;
+        case CategoryEnum.Accessories:
+          this.menuClickEvent.emit(CategoryEnum.Accessories);    
+        break;
+        case CategoryEnum.Bags:
+            this.menuClickEvent.emit(CategoryEnum.Bags);    
+          break;
+      }
+    }
+  }
 }

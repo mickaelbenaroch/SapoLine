@@ -49,32 +49,33 @@
     animation: titleAnimation 36s linear infinite 0s; 
 }
 .cb-slideshow li div h3 { 
-    font-family: 'Indie Flower', cursive;
-    font-size: 240px;
+    font-family: 'Rock Salt', cursive;
+    font-size: 170px;
     padding: 0;
     line-height: 200px; 
+    opacity: 0.5;
 }
 .cb-slideshow li:nth-child(1) span { 
-    background-image: url("/assets/images/sapo1.jpeg") 
+    background-image: url("/assets/images/bg0.jpg") 
 }
 .cb-slideshow li:nth-child(2) span { 
-    background-image: url("/assets/images/sapo2.jpeg");
+    background-image: url("/assets/images/bg1.PNG");
     animation-delay: 6s; 
 }
 .cb-slideshow li:nth-child(3) span { 
-    background-image: url("/assets/images/sapo3.jpeg");
+    background-image: url("/assets/images/bg2.PNG");
     animation-delay: 12s; 
 }
 .cb-slideshow li:nth-child(4) span { 
-    background-image: url("/assets/images/sapo4.jpeg");
+    background-image: url("/assets/images/bg3.jpg");
     animation-delay: 18s; 
 }
 .cb-slideshow li:nth-child(5) span { 
-    background-image: url("/assets/images/sapo5.jpeg");
+    background-image: url("/assets/images/bg4.PNG");
     animation-delay: 24s; 
 }
 .cb-slideshow li:nth-child(6) span { 
-    background-image: url("/assets/images/sapo6.jpeg");
+    background-image: url("/assets/images/bg5.PNG");
     animation-delay: 30s; 
 }
 
@@ -137,8 +138,8 @@
 	opacity: 1;
 }
 @media screen and (max-width: 1140px) { 
-    .cb-slideshow li div h3 { font-size: 140px }
+    .cb-slideshow li div h3 { font-size: 120px }
 }
 @media screen and (max-width: 600px) { 
-    .cb-slideshow li div h3 { font-size: 80px }
+    .cb-slideshow li div h3 { font-size: 70px }
 }
