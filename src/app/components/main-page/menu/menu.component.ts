@@ -14,7 +14,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  enterItem(item: CategoryEnum): void {
+  enterItem(item: string): void {
     if (!item) {
       console.log('Error on click Menu Item');
       return;

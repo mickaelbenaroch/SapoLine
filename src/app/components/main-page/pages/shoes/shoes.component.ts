@@ -8,15 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./shoes.component.scss']
 })
 export class ShoesComponent implements OnInit {
-  public currentItemPage: CategoryEnum;
   constructor(public router: Router) { }
 
   ngOnInit() {
   }
 
-  itemMenuClicked(ev: CategoryEnum): void {
+  itemMenuClicked(ev: string): void {
     if (ev) {
-      this.currentItemPage = ev;
       switch(ev) {
         case CategoryEnum.Shoes:
             this.router.navigateByUrl('shoes');
