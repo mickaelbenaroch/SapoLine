@@ -16,7 +16,7 @@ export class JacketsComponent implements OnInit {
   itemMenuClicked(ev: string): void {
     if (ev) {
       switch(ev) {
-        case CategoryEnum.Shoes:
+        case CategoryEnum.ShoesAndBags:
             this.router.navigateByUrl('shoes');
             break;
           case CategoryEnum.PantsAndBottoms:
@@ -30,6 +30,9 @@ export class JacketsComponent implements OnInit {
           break;
           case CategoryEnum.Accessories:
             this.router.navigateByUrl('accessories');   
+          break;
+          case CategoryEnum.Dresses:
+            this.router.navigateByUrl('dresses');
           break;
       }
     }

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
@@ -14,10 +13,13 @@ import { ShoesComponent } from './components/main-page/pages/shoes/shoes.compone
 import { AccessoriesComponent } from './components/main-page/pages/accessories/accessories.component';
 import { BottomsComponent } from './components/main-page/pages/bottoms/bottoms.component';
 import { TopsComponent } from './components/main-page/pages/tops/tops.component';
-import { BagsComponent } from './components/main-page/pages/bags/bags.component';
+import { DressesComponent } from './components/main-page/pages/dresses/dresses.component';
 import { JacketsComponent } from './components/main-page/pages/jackets/jackets.component';
 import { ItemsDisplayerComponent } from './components/items-displayer/items-displayer.component';
 import { SingleItemComponent } from './components/single-item/single-item.component';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorService } from './services/interceptor/http-interceptor.service';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 const appRoutes: Routes = [
   { path: '' , component: MainPageComponent},
@@ -25,7 +27,7 @@ const appRoutes: Routes = [
   { path: 'tops', component: TopsComponent},
   { path: 'bottoms', component: BottomsComponent},
   { path: 'accessories', component: AccessoriesComponent},
-  { path: 'bags', component: BagsComponent},
+  { path: 'dresses', component: DressesComponent},
   { path: 'jackets', component: JacketsComponent},
 ];
 
@@ -41,18 +43,28 @@ const appRoutes: Routes = [
     AccessoriesComponent,
     BottomsComponent,
     TopsComponent,
-    BagsComponent,
+    DressesComponent,
     JacketsComponent,
     ItemsDisplayerComponent,
-    SingleItemComponent
+    SingleItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
+    BrowserModule,
+    HttpClientModule,
+    NgxUiLoaderModule
   ],
   providers: [
-    HttpServiceService
+    HttpServiceService,
+    HttpClient,
+    HttpInterceptorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

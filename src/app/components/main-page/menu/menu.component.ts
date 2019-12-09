@@ -20,8 +20,8 @@ export class MenuComponent implements OnInit {
       return;
     } else {
       switch(item) {
-        case CategoryEnum.Shoes:
-          this.menuClickEvent.emit(CategoryEnum.Shoes);
+        case CategoryEnum.ShoesAndBags:
+          this.menuClickEvent.emit(CategoryEnum.ShoesAndBags);
           break;
         case CategoryEnum.PantsAndBottoms:
           this.menuClickEvent.emit(CategoryEnum.PantsAndBottoms);
@@ -35,8 +35,8 @@ export class MenuComponent implements OnInit {
         case CategoryEnum.Accessories:
           this.menuClickEvent.emit(CategoryEnum.Accessories);    
         break;
-        case CategoryEnum.Bags:
-            this.menuClickEvent.emit(CategoryEnum.Bags);    
+        case CategoryEnum.Dresses:
+            this.menuClickEvent.emit(CategoryEnum.Dresses);    
           break;
       }
     }

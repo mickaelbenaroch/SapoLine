@@ -3,11 +3,11 @@ import { CategoryEnum } from 'src/app/enums/categories-enum';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-bags',
-  templateUrl: './bags.component.html',
-  styleUrls: ['./bags.component.scss']
+  selector: 'app-dresses',
+  templateUrl: './dresses.component.html',
+  styleUrls: ['./dresses.component.scss']
 })
-export class BagsComponent implements OnInit {
+export class DressesComponent implements OnInit {
 
   constructor(public router: Router) { }
 
@@ -17,7 +17,7 @@ export class BagsComponent implements OnInit {
   itemMenuClicked(ev: string): void {
     if (ev) {
       switch(ev) {
-        case CategoryEnum.Shoes:
+        case CategoryEnum.ShoesAndBags:
             this.router.navigateByUrl('shoes');
             break;
           case CategoryEnum.PantsAndBottoms:
@@ -31,6 +31,9 @@ export class BagsComponent implements OnInit {
           break;
           case CategoryEnum.Accessories:
             this.router.navigateByUrl('accessories');   
+          break;
+          case CategoryEnum.Dresses:
+            this.router.navigateByUrl('dresses');
           break;
       }
     }

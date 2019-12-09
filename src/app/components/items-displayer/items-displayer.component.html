@@ -1,3 +1,12 @@
-<p>
-  items-displayer works!
-</p>
+<div class="envelop">
+  <div class="square" *ngFor="let item of items">
+    <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.picture)"/>
+    <div class="description">
+    <p>{{item.description}}</p>
+    </div>
+    <div class="price">Price: {{item.price}}</div>
+    <div>
+      <button class="but" (click)="Buy()">Buy!</button>
+    </div>
+  </div>
+</div>

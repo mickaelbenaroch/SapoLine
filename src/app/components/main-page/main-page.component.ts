@@ -19,7 +19,7 @@ export class MainPageComponent implements OnInit {
     if (ev) {
       this.currentItemPage = ev;
       switch(ev) {
-        case CategoryEnum.Shoes:
+        case CategoryEnum.ShoesAndBags:
             this.router.navigateByUrl('shoes');
             break;
           case CategoryEnum.PantsAndBottoms:
@@ -34,6 +34,9 @@ export class MainPageComponent implements OnInit {
           case CategoryEnum.Accessories:
             this.router.navigateByUrl('accessories');   
           break;
+          case CategoryEnum.Dresses:
+            this.router.navigateByUrl('dresses');
+            break;
       }
     }
   }
