@@ -4,4 +4,21 @@
     .div-1 {
         padding-top: 100px;
     }
+    app-menu {
+        text-align: right;
+        display: flex;
+        z-index: 99999999999999;
+        justify-content: flex-end;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    app-menu {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+    }
+    .envelop {
+        height: unset;
+    }
 }

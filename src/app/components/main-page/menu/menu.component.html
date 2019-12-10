@@ -1,4 +1,4 @@
-<!--<div class="envelop">
+<div class="envelop">
   <div class="circle">
     <span (click)="enterItem('Shirts&Tops')">Shirts & Tops</span>
   </div>
@@ -17,21 +17,34 @@
   <div class="circle">
       <span (click)="enterItem('Accessories')">Accessories</span>
   </div>
-</div>-->
-<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+</div>
+
+<button mat-icon-button [matMenuTriggerFor]="menu" class="but" aria-label="Example icon-button with a menu">
   <mat-icon>more_vert</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>
-    <mat-icon>dialpad</mat-icon>
-    <span>Redial</span>
-  </button>
-  <button mat-menu-item disabled>
-    <mat-icon>voicemail</mat-icon>
-    <span>Check voice mail</span>
-  </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="enterItem('Shirts&Tops')">
     <mat-icon>notifications_off</mat-icon>
-    <span>Disable alerts</span>
+    <span>Shirts & Tops</span>
+  </button>
+  <button mat-menu-item (click)="enterItem('Pants&Bottoms')">
+    <mat-icon>notifications_off</mat-icon>
+    <span>Pants & Bottoms</span>
+  </button>
+  <button mat-menu-item (click)="enterItem('Coats&Jackets')">
+    <mat-icon>notifications_off</mat-icon>
+    <span>Coats & Jackets</span>
+  </button>
+  <button mat-menu-item (click)="enterItem('Dresses')"> 
+    <mat-icon>notifications_off</mat-icon>
+    <span>Dresses</span>
+  </button>
+  <button mat-menu-item (click)="enterItem('Shoes&Bags')">
+    <mat-icon>notifications_off</mat-icon>
+    <span>Shoes & Bags</span>
+  </button>
+  <button mat-menu-item (click)="enterItem('Accessories')">
+    <mat-icon>notifications_off</mat-icon>
+    <span>Accessories</span>
   </button>
 </mat-menu>

@@ -24,3 +24,34 @@
         }
     }
 }
+
+button, mat-menu {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    button, mat-menu {
+        display: block;
+    }
+    .envelop {
+        display: none;
+    }
+    .but {
+        cursor: pointer;
+        background: white;
+        width: 40px;
+        border-radius: 10px;
+        height: 40px;
+    }
+}
+
+::ng-deep .mat-menu-panel {
+    background-color: black;
+}
+::ng-deep .mat-menu-item {
+    color: white;
+    font-weight: bold;
+    font-family: 'Amatic SC', cursive;
+    font-size: 22px;
+    cursor: pointer;
+}
