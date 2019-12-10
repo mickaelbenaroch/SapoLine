@@ -8,6 +8,7 @@ import { CategoryEnum } from 'src/app/enums/categories-enum';
 })
 export class MenuComponent implements OnInit {
 
+  public hamburger: boolean;
   @Output() menuClickEvent: EventEmitter<CategoryEnum> = new EventEmitter();
   constructor() { }
 
@@ -40,5 +41,9 @@ export class MenuComponent implements OnInit {
           break;
       }
     }
+  }
+
+  toggleMenu(): void {
+    this.hamburger = !this.hamburger;
   }
 }

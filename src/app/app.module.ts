@@ -20,6 +20,9 @@ import { SingleItemComponent } from './components/single-item/single-item.compon
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './services/interceptor/http-interceptor.service';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 const appRoutes: Routes = [
   { path: '' , component: MainPageComponent},
@@ -54,7 +57,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpClientModule,
-    NgxUiLoaderModule
+    NgxUiLoaderModule,
+    MatMenuModule,
+    MatIconModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     HttpServiceService,

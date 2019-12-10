@@ -1,16 +1,14 @@
 img {
     position: absolute;
-    width: 30%;
-    left: -30px;
-    top: -97px;
+    width: 180px;
+    left: 40px;
+    top: 22px;
     z-index: 9999999999;
     cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {
    img {
-    width: 84%;
-    left: -42px;
-    top: -66px;
+        width: 100px;
    }
   }
