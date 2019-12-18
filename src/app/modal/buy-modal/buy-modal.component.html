@@ -1,0 +1,58 @@
+<div class="envelop">
+    <h1>Buy Item</h1>
+    <h2>{{item.name}}</h2>
+    <h3>{{item.price}}</h3>
+    <form>
+    <div class="f-label">
+        <div class="field-group">
+            <div>First Name:</div>
+            <input [(ngModel)]="fname" name="fname" (keydown)="disableError('fname')"/>
+            <small [ngClass]="{'hide':fnameError}">First name is empty!</small>
+        </div>
+        <div class="field-group">
+            <div>Last Name:</div>
+            <input [(ngModel)]="lname" name="lname" (keydown)="disableError('lname')"/>
+            <small [ngClass]="{'hide':lnameError}">Last name is empty!</small>
+        </div>
+    </div>
+    <div class="f-label email">
+        <div class="field-group">
+            <div>Email:</div>
+            <input class="email" [(ngModel)]="email" name="email" (keydown)="disableError('email')"/>
+            <small [ngClass]="{'hide':emailError}" class="email">Email is invalid!</small>
+        </div>
+    </div>
+    <div class="f-label">
+        <div class="field-group">
+            <div>Phone Number:</div>
+            <input [(ngModel)]="phone" name="phone" (keydown)="disableError('phone')"/>
+            <small [ngClass]="{'hide':phoneError}">Phone number is invalid!</small>
+        </div>
+        <div class="field-group">
+            <div>Street Name:</div>
+            <input [(ngModel)]="street" name="street" (keydown)="disableError('street')"/>
+            <small [ngClass]="{'hide':streetError}">Street is empty!</small>
+        </div>
+    </div>
+    <div class="f-label">
+        <div class="field-group">
+            <div>House Number:</div>
+            <input [(ngModel)]="houseNumber" name="houseNumber" (keydown)="disableError('houseNumber')"/>
+            <small [ngClass]="{'hide':houseNumberError}">House Number is empty!</small>
+        </div>
+        <div class="field-group">
+            <div>City:</div>
+            <input [(ngModel)]="city" name="city" (keydown)="disableError('city')"/>
+            <small [ngClass]="{'hide':cityError}">City is empty!</small>
+        </div>
+        <div class="field-group">
+            <div>Postal Code:</div>
+            <input [(ngModel)]="postalCode" name="postalCode" (keydown)="disableError('postalCode')"/>
+            <small [ngClass]="{'hide':postalCodeError}">Postal Code is empty!</small>
+        </div>
+    </div>
+    <div class="but-div">
+        <button (click)="send()">Send!</button>
+    </div>
+    </form>
+</div>

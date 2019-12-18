@@ -22,7 +22,12 @@ import { HttpInterceptorService } from './services/interceptor/http-interceptor.
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ItemDetailComponent } from './components/item-detail/item-detail.component'
+import { ItemServiceService } from './services/item-service/item-service.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BuyModalComponent } from './modal/buy-modal/buy-modal.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '' , component: MainPageComponent},
@@ -32,6 +37,7 @@ const appRoutes: Routes = [
   { path: 'accessories', component: AccessoriesComponent},
   { path: 'dresses', component: DressesComponent},
   { path: 'jackets', component: JacketsComponent},
+  { path: 'itemDetail', component: ItemDetailComponent},
 ];
 
 @NgModule({
@@ -50,6 +56,8 @@ const appRoutes: Routes = [
     JacketsComponent,
     ItemsDisplayerComponent,
     SingleItemComponent,
+    ItemDetailComponent,
+    BuyModalComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +69,8 @@ const appRoutes: Routes = [
     MatMenuModule,
     MatIconModule,
     BrowserAnimationsModule,
+    MatDialogModule,
+    FormsModule
   ],
   providers: [
     HttpServiceService,
@@ -71,7 +81,11 @@ const appRoutes: Routes = [
       useClass: HttpInterceptorService,
       multi: true
     },
+    ItemServiceService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    BuyModalComponent
+  ]
 })
 export class AppModule { }

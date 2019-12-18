@@ -1,0 +1,28 @@
+<div class="envelop">
+  <app-header></app-header>
+  <app-menu (menuClickEvent)="itemMenuClicked($event)"></app-menu>
+  <div class="div-1">
+    <div class="left-panel" *ngIf="currentItem">
+        <div>Description:</div>
+        <p>{{currentItem.description}}</p>
+        <div>Price: {{' ' + currentItem.price}}</div>
+        <div>
+            <button class="buy" (click)="buyItem()">Buy This Item!</button>
+        </div>
+    </div>
+    <div class="rigth-panel" *ngIf="currentItem">
+        <div>
+            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(currentItem.picture)"/>
+        </div>
+        <div>
+            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(currentItem.picture)"/>
+        </div>
+        <div>
+            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(currentItem.picture)"/>
+        </div>
+        <div>
+            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(currentItem.picture)"/>
+        </div>
+    </div>
+  </div>
+</div>

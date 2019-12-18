@@ -1,0 +1,64 @@
+.envelop {
+    form {
+        display: flex;
+        flex-direction: column;
+        .f-label {
+            display: flex;
+            div {
+                width: 50%;
+                margin: 0.5rem;
+                margin-bottom: 0.1rem;
+            }
+        }
+        .f-input {
+            display: flex;
+            input {
+                width: 50%;
+                margin: 0.5rem;
+                margin-top: 0.1rem;
+                margin-bottom: 0.1rem;
+            }
+        }
+        .but-div {
+            display: flex;
+            justify-content: center;
+            padding: 0.6rem;
+            button {
+                padding: 0.4rem;
+            }
+        }
+        .email {
+            width: 100% !important;
+        }
+        small {
+            color: red;
+            width: 50%;
+            padding: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 0.1rem;
+            padding-top: 0 !important;
+            visibility: hidden;
+        }
+    }
+}
+.hide {
+    visibility: visible !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .f-label {
+        flex-direction: column;
+        div {
+            width: unset !important;
+            margin-left: 0 !important;
+            margin-top: 0 !important;
+        }
+    }
+    input {
+        border-color: lightgray;
+        width: 100%;
+    }
+    small {
+        padding-left: 0!important;
+    }
+}

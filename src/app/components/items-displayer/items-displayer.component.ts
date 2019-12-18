@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ItemModel } from 'src/app/models/ItemModel';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { ItemServiceService } from 'src/app/services/item-service/item-service.service';
 
 @Component({
   selector: 'app-items-displayer',
@@ -11,14 +13,17 @@ export class ItemsDisplayerComponent implements OnInit {
 
   @Input() items: ItemModel[] = [];
   @Output() buyClickEvent: EventEmitter<ItemModel> = new EventEmitter();
-  constructor(public _DomSanitizationService: DomSanitizer) { }
+  constructor(public _DomSanitizationService: DomSanitizer,
+              public router: Router,
+              public itemService: ItemServiceService) { }
 
   ngOnInit() {
   }
 
-  Buy(item: ItemModel): void {
+  enterItem(item: ItemModel): void {
     if (item) {
-      this.buyClickEvent.emit(item);
+      this.itemService.currentViewedItem = item;
+      this.router.navigateByUrl('itemDetail');
     }
     console.log("item clicked" + item);
   }

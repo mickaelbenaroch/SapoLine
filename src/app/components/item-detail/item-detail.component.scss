@@ -1,0 +1,49 @@
+.envelop {
+    background-color: darkgrey;
+    .div-1 {
+        padding-top: 150px;
+        display: flex;
+        justify-content: space-around;
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            .buy {
+                cursor: pointer;
+            }
+        }
+        .rigth-panel {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    app-menu {
+        text-align: right;
+        display: flex;
+        z-index: 99999999999999;
+        justify-content: flex-end;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    app-menu {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+    }
+    .envelop {
+        height: unset;
+    }
+    img {
+        width: 100%;
+    }
+    .div-1 {
+        flex-direction: column;
+    }
+    .left-panel, .rigth-panel {
+        padding: 1rem;
+    }
+    .buy {
+        background: white;
+        margin-top: 8px;
+    }
+}

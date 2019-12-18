@@ -1,12 +1,11 @@
 <div class="envelop">
   <div class="square" *ngFor="let item of items">
-    <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.picture)"/>
-    <div class="description">
-    <p>{{item.description}}</p>
-    </div>
-    <div class="price">Price: {{item.price}}</div>
-    <div>
-      <button class="but" (click)="Buy()">Buy!</button>
+    <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.picture)" (click)="enterItem(item)"/>
+    <div class="div-1">
+      <div class="description" (click)="enterItem(item)">
+        <p>{{item.description}}</p>
+      </div>
+      <div class="price">Price: {{item.price}}</div>
     </div>
   </div>
 </div>
