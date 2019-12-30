@@ -1,7 +1,7 @@
 <div class="envelop">
   <div class="lang-div">
-    <img *ngIf="langService.currentLanguage === localLanguageEnum.English" src="assets/images/israel.svg" (click)="changeLanguageTo('hebrew')"/>
-    <img *ngIf="langService.currentLanguage === localLanguageEnum.Hebrew" src="assets/images/usa.svg" (click)="changeLanguageTo('usa')"/>
+    <img *ngIf="langService.currentLanguage === localLanguageEnum.Hebrew" src="assets/images/israel.svg" (click)="changeLanguageTo('hebrew')"/>
+    <img *ngIf="langService.currentLanguage === localLanguageEnum.English" src="assets/images/usa.svg" (click)="changeLanguageTo('usa')"/>
   </div>
   <div class="circle">
     <span (click)="enterItem('Shirts&Tops')">{{langService.translate('Shirts & Tops')}}</span>

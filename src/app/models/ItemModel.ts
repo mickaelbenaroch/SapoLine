@@ -6,5 +6,8 @@ export class ItemModel {
     public price: string;
     public discount: string;
     public picture: string;
-
+    public descriptionEnglish: string;
+    public sizes: string;
+    public quantity: number;
+    public choosedSize: string;
 }

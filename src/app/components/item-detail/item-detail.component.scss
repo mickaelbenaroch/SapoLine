@@ -21,7 +21,15 @@
             right: 50px;
             width: 16%;
             padding: 1rem;
-            
+            .dd {
+                font-size: 20px;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+            select {
+                width: 65px;
+                border: 1px solid;
+            }
             .desc {
                 color: white;
             }

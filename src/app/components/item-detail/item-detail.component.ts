@@ -16,6 +16,7 @@ export class ItemDetailComponent implements OnInit {
 
   public currentItem: ItemModel;
   public languageEnum = LanguageEnum;
+  public sizes: string[] = [];
   constructor(public itemService: ItemServiceService,
               public _DomSanitizationService: DomSanitizer,
               public router: Router,
@@ -27,9 +28,10 @@ export class ItemDetailComponent implements OnInit {
     } else {
       this.router.navigateByUrl('/');
     }
+    this.splitSizes();
   }
 
-  buyItem(): void {
+  addToCart(): void {
     if (this.currentItem) {
       this.itemService.openConfirmation(this.currentItem);
     }
@@ -60,5 +62,15 @@ export class ItemDetailComponent implements OnInit {
     }
   }
 
+  splitSizes() : void {
+    if (this.currentItem && this.currentItem.sizes) {
+      let temp = this.currentItem.sizes.split(',');
+      temp.forEach(char => {
+        if (char !== ',') {
+          this.sizes.push(char);
+        }
+      })
+    }
+  }
 
 }
