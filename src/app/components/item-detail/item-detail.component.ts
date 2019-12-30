@@ -4,6 +4,8 @@ import { ItemModel } from 'src/app/models/ItemModel';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { CategoryEnum } from 'src/app/enums/categories-enum';
+import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
+import { LanguageEnum } from 'src/app/enums/language-enum';
 
 @Component({
   selector: 'app-item-detail',
@@ -13,9 +15,11 @@ import { CategoryEnum } from 'src/app/enums/categories-enum';
 export class ItemDetailComponent implements OnInit {
 
   public currentItem: ItemModel;
+  public languageEnum = LanguageEnum;
   constructor(public itemService: ItemServiceService,
               public _DomSanitizationService: DomSanitizer,
-              public router: Router) { }
+              public router: Router,
+              public langService: TranslateServiceService) { }
 
   ngOnInit() {
     if (this.itemService.currentViewedItem) {
@@ -30,7 +34,7 @@ export class ItemDetailComponent implements OnInit {
       this.itemService.openConfirmation(this.currentItem);
     }
   }
-  
+
   itemMenuClicked(ev: CategoryEnum): void {
     if (ev) {
       switch(ev) {

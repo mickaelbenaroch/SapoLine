@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CategoryEnum } from 'src/app/enums/categories-enum';
+import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
+import { LanguageEnum } from 'src/app/enums/language-enum';
 
 @Component({
   selector: 'app-menu',
@@ -8,9 +10,10 @@ import { CategoryEnum } from 'src/app/enums/categories-enum';
 })
 export class MenuComponent implements OnInit {
 
+  public localLanguageEnum = LanguageEnum;
   public hamburger: boolean;
   @Output() menuClickEvent: EventEmitter<CategoryEnum> = new EventEmitter();
-  constructor() { }
+  constructor(public langService: TranslateServiceService) { }
 
   ngOnInit() {
   }
@@ -45,5 +48,16 @@ export class MenuComponent implements OnInit {
 
   toggleMenu(): void {
     this.hamburger = !this.hamburger;
+  }
+
+  changeLanguageTo(language: string) : void {
+    switch(language) {
+      case 'hebrew':
+        this.langService.currentLanguage = LanguageEnum.Hebrew;
+        break;
+      case 'usa':
+        this.langService.currentLanguage = LanguageEnum.English;
+        break;
+    }
   }
 }

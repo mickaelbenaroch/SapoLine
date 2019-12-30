@@ -29,6 +29,22 @@ button, mat-menu {
     display: none;
 }
 
+.lang-div {
+    display: flex;
+    img {
+        width: 32px;
+        cursor: pointer;
+    }
+}
+
+.cart-div {
+    display: flex;
+    img {
+        width: 32px;
+        cursor: pointer;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     button, mat-menu {
         display: block;
@@ -42,6 +58,16 @@ button, mat-menu {
         width: 40px;
         border-radius: 10px;
         height: 40px;
+    }
+    .mob-lang{
+        display: flex;
+        justify-content: center;
+        img {
+            width: 32px;
+            margin-left: 5px;
+            margin-right: 5px;
+            align-self: center;
+        }
     }
 }
 

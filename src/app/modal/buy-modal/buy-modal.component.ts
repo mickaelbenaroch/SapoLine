@@ -3,6 +3,8 @@ import { ItemModel } from 'src/app/models/ItemModel';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpServiceService } from 'src/app/services/http-service/http-service.service';
 import { UserModel } from 'src/app/models/UserModel';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
 
 @Component({
   selector: 'app-buy-modal',
@@ -30,7 +32,8 @@ export class BuyModalComponent implements OnInit {
   public postalCode: string;
   constructor(public dialogRef: MatDialogRef<BuyModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: BuyModalComponent,
-    public httpService: HttpServiceService) { 
+    public httpService: HttpServiceService,
+    public translateService: TranslateServiceService) { 
       this.item = this.data.item;
     }
 
@@ -124,5 +127,9 @@ export class BuyModalComponent implements OnInit {
         break;
       }
     }
+  }
+
+  close(): void {
+    this.dialogRef.close();
   }
 }

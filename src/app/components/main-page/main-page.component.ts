@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryEnum } from 'src/app/enums/categories-enum';
 import { Router } from '@angular/router';
+import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
+import { LanguageEnum } from 'src/app/enums/language-enum';
 
 @Component({
   selector: 'app-main-page',
@@ -10,9 +12,11 @@ import { Router } from '@angular/router';
 export class MainPageComponent implements OnInit {
 
   public currentItemPage: CategoryEnum;
-  constructor(public router: Router) { }
+  constructor(public router: Router,
+              public langService: TranslateServiceService) { }
 
   ngOnInit() {
+    this.langService.currentLanguage = LanguageEnum.English;
   }
 
   itemMenuClicked(ev: CategoryEnum): void {

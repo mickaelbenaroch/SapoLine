@@ -1,19 +1,42 @@
 .envelop {
     background-color: darkgrey;
+    font-family: 'Amatic SC', cursive;
+    header {
+        position: fixed;
+        width: 100%;
+        background-color: darkgray;
+        height: 150px;
+        -webkit-box-shadow: 10px 10px 6px 0px rgba(122,120,122,1);
+        -moz-box-shadow: 10px 10px 6px 0px rgba(122,120,122,1);
+        box-shadow: 10px 10px 6px 0px rgba(122,120,122,1);
+    }
     .div-1 {
         padding-top: 150px;
         display: flex;
-        justify-content: space-around;
+        justify-content: flex-end;
         .left-panel {
             display: flex;
             flex-direction: column;
+            position: fixed;
+            right: 50px;
+            width: 16%;
+            padding: 1rem;
+            
+            .desc {
+                color: white;
+            }
             .buy {
                 cursor: pointer;
+                padding: 0.5rem;
+                background: white;
+                border-radius: 5px;
             }
         }
         .rigth-panel {
             display: flex;
             flex-direction: column;
+            padding-left: 3rem;
+            max-width: 75%;
         }
     }
     app-menu {
@@ -23,6 +46,21 @@
         justify-content: flex-end;
     }
 }
+.hebrew {
+    direction: rtl;
+}
+
+.left-usa {
+    right: unset;
+    left: 50px;
+}
+
+.padding-left-3rem {
+    padding-right: 3rem !important;
+    padding-left: 0 !important;
+}
+
+
 
 @media only screen and (max-width: 600px) {
     app-menu {
@@ -38,6 +76,7 @@
     }
     .div-1 {
         flex-direction: column;
+        padding-top: 60px !important;
     }
     .left-panel, .rigth-panel {
         padding: 1rem;
@@ -45,5 +84,17 @@
     .buy {
         background: white;
         margin-top: 8px;
+    }
+    .left-panel {
+        position: unset !important;
+        width: unset !important;
+    }
+    .rigth-panel {
+        padding-left: 1rem !important;        
+        max-width: unset !important;
+    }
+    header {
+        height: 70px !important;
+        z-index: 10000 !important;
     }
 }

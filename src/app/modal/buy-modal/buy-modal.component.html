@@ -1,7 +1,10 @@
 <div class="envelop">
-    <h2>Buy Item</h2>
+    <div class="close-div">
+      <h2>Buy Item</h2>
+      <img src="/assets/images/close.svg" (click)="close()"/>
+    </div>
     <h3>{{item.name}}</h3>
-    <h4>{{item.price}}</h4>
+    <h4>{{this.translateService.translate('price')}}: {{item.price}}</h4>
     <form>
     <div class="f-label">
         <div class="field-group">

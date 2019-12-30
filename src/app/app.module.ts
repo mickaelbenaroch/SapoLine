@@ -28,6 +28,7 @@ import { ItemServiceService } from './services/item-service/item-service.service
 import { MatDialogModule } from '@angular/material/dialog';
 import { BuyModalComponent } from './modal/buy-modal/buy-modal.component';
 import { FormsModule } from '@angular/forms';
+import { TranslateServiceService } from './services/translate/translate-service.service';
 
 const appRoutes: Routes = [
   { path: '' , component: MainPageComponent},
@@ -81,7 +82,8 @@ const appRoutes: Routes = [
       useClass: HttpInterceptorService,
       multi: true
     },
-    ItemServiceService
+    ItemServiceService,
+    TranslateServiceService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

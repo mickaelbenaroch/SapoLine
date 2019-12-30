@@ -1,21 +1,28 @@
 <div class="envelop">
-  <div class="circle">
-    <span (click)="enterItem('Shirts&Tops')">Shirts & Tops</span>
+  <div class="lang-div">
+    <img *ngIf="langService.currentLanguage === localLanguageEnum.English" src="assets/images/israel.svg" (click)="changeLanguageTo('hebrew')"/>
+    <img *ngIf="langService.currentLanguage === localLanguageEnum.Hebrew" src="assets/images/usa.svg" (click)="changeLanguageTo('usa')"/>
   </div>
   <div class="circle">
-      <span (click)="enterItem('Pants&Bottoms')">Pants & Bottoms</span>
+    <span (click)="enterItem('Shirts&Tops')">{{langService.translate('Shirts & Tops')}}</span>
   </div>
   <div class="circle">
-      <span (click)="enterItem('Coats&Jackets')">Coats & Jackets</span>
+      <span (click)="enterItem('Pants&Bottoms')">{{langService.translate('Pants & Bottoms')}}</span>
   </div>
   <div class="circle">
-      <span (click)="enterItem('Dresses')">Dresses</span>
+      <span (click)="enterItem('Coats&Jackets')">{{langService.translate('Coats & Jackets')}}</span>
   </div>
   <div class="circle">
-      <span (click)="enterItem('Shoes&Bags')">Shoes & Bags</span>
+      <span (click)="enterItem('Dresses')">{{langService.translate('Dresses')}}</span>
   </div>
   <div class="circle">
-      <span (click)="enterItem('Accessories')">Accessories</span>
+      <span (click)="enterItem('Shoes&Bags')">{{langService.translate('Shoes & Bags')}}</span>
+  </div>
+  <div class="circle">
+      <span (click)="enterItem('Accessories')">{{langService.translate('Accessories')}}</span>
+  </div>
+  <div class="cart-div">
+    <img src="/assets/images/cart.svg"/>
   </div>
 </div>
 
@@ -25,26 +32,29 @@
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="enterItem('Shirts&Tops')">
     <mat-icon>notifications_off</mat-icon>
-    <span>Shirts & Tops</span>
+    <span>{{langService.translate('Shirts & Tops')}}</span>
   </button>
   <button mat-menu-item (click)="enterItem('Pants&Bottoms')">
     <mat-icon>notifications_off</mat-icon>
-    <span>Pants & Bottoms</span>
+    <span>{{langService.translate('Pants & Bottoms')}}</span>
   </button>
   <button mat-menu-item (click)="enterItem('Coats&Jackets')">
     <mat-icon>notifications_off</mat-icon>
-    <span>Coats & Jackets</span>
+    <span>{{langService.translate('Coats & Jackets')}}</span>
   </button>
   <button mat-menu-item (click)="enterItem('Dresses')"> 
     <mat-icon>notifications_off</mat-icon>
-    <span>Dresses</span>
+    <span>{{langService.translate('Dresses')}}</span>
   </button>
   <button mat-menu-item (click)="enterItem('Shoes&Bags')">
     <mat-icon>notifications_off</mat-icon>
-    <span>Shoes & Bags</span>
+    <span>{{langService.translate('Shoes & Bags')}}</span>
   </button>
   <button mat-menu-item (click)="enterItem('Accessories')">
     <mat-icon>notifications_off</mat-icon>
-    <span>Accessories</span>
+    <span>{{langService.translate('Accessories')}}</span>
   </button>
+  <div class="mob-lang">
+    <img src="/assets/images/cart.svg"/>
+  </div>
 </mat-menu>

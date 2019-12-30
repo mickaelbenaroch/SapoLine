@@ -1,13 +1,24 @@
 .envelop {
+    .close-div {
+        display: flex;
+        justify-content: space-between;
+        img {
+            width: 15px;
+        }
+    }
     form {
         display: flex;
         flex-direction: column;
         .f-label {
             display: flex;
             div {
-                width: 50%;
+                width: 100%;
                 margin: 0.5rem;
                 margin-bottom: 0.1rem;
+                input {
+                    width: 100%;
+                    border-color: lightgray;
+                }
             }
         }
         .f-input {
@@ -64,5 +75,17 @@
     h1,h2,h3 {
         margin-top: 5px !important;
         margin-bottom: 5px !important;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        .f-label {
+            display: flex;
+            div {
+                width: 50%;
+                margin: 0.5rem;
+                margin-bottom: 0.1rem;
+            }
+        }
     }
 }

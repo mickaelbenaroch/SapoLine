@@ -1,16 +1,18 @@
 <div class="envelop">
-  <app-header></app-header>
-  <app-menu (menuClickEvent)="itemMenuClicked($event)"></app-menu>
-  <div class="div-1">
-    <div class="left-panel" *ngIf="currentItem">
-        <div>Description:</div>
-        <p>{{currentItem.description}}</p>
-        <div>Price: {{' ' + currentItem.price}}</div>
-        <div>
-            <button class="buy" (click)="buyItem()">Buy This Item!</button>
+  <header>
+    <app-header></app-header>
+    <app-menu (menuClickEvent)="itemMenuClicked($event)"></app-menu>
+  </header>
+  <div class="div-1" [ngClass]="{'hebrew': this.langService.currentLanguage === this.languageEnum.English}">
+    <div class="left-panel" [ngClass]="{'left-usa': this.langService.currentLanguage === this.languageEnum.Hebrew}" *ngIf="currentItem">
+        <div style="font-size: 23px; font-weight: bold">{{langService.translate('Description')}}:</div>
+        <p class="desc">{{currentItem.description}}</p>
+        <div style="font-size: 23px;font-weight: bold">{{langService.translate('price')}}: {{' ' + currentItem.price}}</div>
+        <div style="margin-top: 10px">
+            <button class="buy" (click)="buyItem()">{{langService.translate('Add to cart')}}</button>
         </div>
     </div>
-    <div class="rigth-panel" *ngIf="currentItem">
+    <div class="rigth-panel" [ngClass]="{'padding-left-3rem': this.langService.currentLanguage === this.languageEnum.Hebrew}" *ngIf="currentItem">
         <div>
             <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(currentItem.picture)"/>
         </div>
