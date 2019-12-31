@@ -8,11 +8,17 @@
         <div style="font-size: 23px; font-weight: bold">{{langService.translate('Description')}}:</div>
         <p class="desc" *ngIf="this.langService.currentLanguage === this.languageEnum.English">{{currentItem.description}}</p>
         <p class="desc" *ngIf="this.langService.currentLanguage === this.languageEnum.Hebrew">{{currentItem.descriptionEnglish}}</p>
-        <div class="dd">
-            <div>{{langService.translate('Choose size')}}:</div>
-            <select>
-                <option *ngFor="let size of sizes" value="size" [ngModel]="currentItem.choosedSize" ngDefaultControl name="size">{{size}}</option>
-            </select>
+        <div class="group-1">
+            <div class="dd">
+                <div>{{langService.translate('Choose size')}}:</div>
+                <select>
+                    <option *ngFor="let size of sizes" value="size" [(ngModel)]="currentItem.choosedSize" ngDefaultControl name="size">{{size}}</option>
+                </select>
+            </div>
+            <div class="dd">
+                <div>{{langService.translate('Choose quantity')}}:</div>
+                <input class="quantity" type="number" min="1" max="10" value="quantity" [(ngModel)]="currentItem.quantity" ngDefaultControl name="quantity"/>
+            </div>
         </div>
         <div style="font-size: 23px;font-weight: bold">{{langService.translate('price')}}: {{' ' + currentItem.price}}</div>
         <div style="margin-top: 10px">

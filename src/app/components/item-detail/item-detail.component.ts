@@ -25,15 +25,25 @@ export class ItemDetailComponent implements OnInit {
   ngOnInit() {
     if (this.itemService.currentViewedItem) {
       this.currentItem = this.itemService.currentViewedItem;
+      this.currentItem.quantity = 1;
     } else {
       this.router.navigateByUrl('/');
     }
     this.splitSizes();
+    if (this.currentItem) {
+      this.currentItem.choosedSize = this.sizes[0];
+    }
   }
 
   addToCart(): void {
     if (this.currentItem) {
-      this.itemService.openConfirmation(this.currentItem);
+      if (this.checkValidity()) {
+         console.log("item added to cart: " +  this.currentItem);
+         this.itemService.addToCart(this.currentItem);
+      } else {
+        //TODO: Handle errors on order
+      }
+      //this.itemService.openConfirmation(this.currentItem);
     }
   }
 
@@ -72,5 +82,15 @@ export class ItemDetailComponent implements OnInit {
       })
     }
   }
-
+  
+  checkValidity(): boolean {
+    if (this.currentItem && 
+       this.currentItem.quantity && 
+       this.currentItem.quantity > 0 && 
+       this.currentItem.quantity < 10  &&
+       this.currentItem.sizes.includes(this.currentItem.choosedSize)) {
+         return true;
+    } 
+    return false; 
+  }
 }

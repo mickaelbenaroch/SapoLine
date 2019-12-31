@@ -6,6 +6,8 @@ import { BuyModalComponent } from 'src/app/modal/buy-modal/buy-modal.component';
 @Injectable()
 export class ItemServiceService {
   public currentViewedItem: ItemModel;
+  public cartOrderCounter: ItemModel[] = [];
+  
   constructor(public modalService: MatDialog) { }
 
   openConfirmation(item: ItemModel): void {
@@ -13,5 +15,11 @@ export class ItemServiceService {
         width: '550px',
         data: {item: item }
       });
+  }
+
+  addToCart(item: ItemModel): void {
+     if(item) {
+        this.cartOrderCounter.push(item);
+     }
   }
 }

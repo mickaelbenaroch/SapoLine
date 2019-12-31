@@ -15,7 +15,8 @@ export class TranslateServiceService {
     ["Accessories"]:'אקססוריז',
     ["Add to cart"]:'הוסף לעגלה',
     ["Description"]: 'תיאור',
-    ["Choose size"]: 'בחירת מידה'
+    ["Choose size"]: 'בחירת מידה',
+    ["Choose quantity"]: 'בחירת כמות'
   };
   englishDico: Dictionary<string> = {
     ["price"]: 'price',
@@ -27,7 +28,8 @@ export class TranslateServiceService {
     ["Accessories"]:'Accessories',
     ["Add to cart"]: 'Add to cart',
     ["Description"]: 'Description',
-    ["Choose size"]: 'Choose size'
+    ["Choose size"]: 'Choose size',
+    ["Choose quantity"]: 'Choose quantity'
   };
   public currentLanguage: LanguageEnum = LanguageEnum.English;
   
