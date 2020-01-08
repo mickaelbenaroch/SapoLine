@@ -65,7 +65,7 @@ private getLinkWhastapp() : string{
   return 'https://web.whatsapp.com/send?phone=' + this.phoneNumber + '&text=%20' + this.message + '&source&data';
 }
 
-  private whatsapp() : void {
+public whatsapp() : void {
     switch(this.platform) {
       case PlatformEnum.Android: case PlatformEnum.WindowsMobile:case PlatformEnum.Apple:
         let mobile = 'https://api.whatsapp.com/send?phone=' + this.phoneNumber;
@@ -78,7 +78,7 @@ private getLinkWhastapp() : string{
     }
   }
 
-  private bit(): void {
+public bit(): void {
     switch(this.platform) {
       case PlatformEnum.Android: case PlatformEnum.WindowsMobile:
         this.goToUrl('https://play.google.com/store/apps/details?id=com.bnhp.payments.paymentsapp');
@@ -92,7 +92,7 @@ private getLinkWhastapp() : string{
     }
   }
 
-  private pepper(): void {
+public pepper(): void {
     switch(this.platform) {
       case PlatformEnum.Android: case PlatformEnum.WindowsMobile:
         this.goToUrl('https://play.google.com/store/apps/details?id=com.pepper.pay');
@@ -106,7 +106,7 @@ private getLinkWhastapp() : string{
     }
   }
 
-  private paybox(): void {
+public paybox(): void {
     switch(this.platform) {
       case PlatformEnum.Android: case PlatformEnum.WindowsMobile:
         this.goToUrl('https://play.google.com/store/apps/details?id=com.payboxapp');
