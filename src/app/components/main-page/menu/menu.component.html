@@ -22,7 +22,7 @@
       <span (click)="enterItem('Accessories')">{{langService.translate('Accessories')}}</span>
   </div>
   <div class="cart-div">
-    <img src="/assets/images/cart.svg"/>
+    <img src="/assets/images/cart.svg" (click)="openCart()"/>
     <div class="cartCount">
         <span>{{itemService.cartOrderCounter.length}}</span>
     </div>
@@ -58,6 +58,9 @@
     <span>{{langService.translate('Accessories')}}</span>
   </button>
   <div class="mob-lang">
-    <img src="/assets/images/cart.svg"/>
+    <img src="/assets/images/cart.svg" (click)="openCart()"/>
+    <div class="cartCount" style="color: white">
+        <span>{{itemService.cartOrderCounter.length}}</span>
+    </div>
   </div>
 </mat-menu>

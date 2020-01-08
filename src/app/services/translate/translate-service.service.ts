@@ -16,7 +16,15 @@ export class TranslateServiceService {
     ["Add to cart"]:'הוסף לעגלה',
     ["Description"]: 'תיאור',
     ["Choose size"]: 'בחירת מידה',
-    ["Choose quantity"]: 'בחירת כמות'
+    ["Choose quantity"]: 'בחירת כמות',
+    ["Cart is empty!"]: 'העגלה ריקה!',
+    ["Total: "]: 'סה״כ :',
+    ["To Payment :"]: 'לתשלום :',
+    ["Need help? Ask us"]: 'צריך עזרה? פנה אלינו',
+    ["Payment text"]: "אצלנו התשלום לא נעשה באשראי דרך האתר,אלא הרבה יותר קל! מספיק לבחור אחד האפשרויות הבאות. לפי מה שנוח לכם תוכלו לשלם דרך אחת מפלטפורמוט התשלום או לחילופין לשלם במזומן לשליח בעת הגעת המוצר.",
+    ["Whatsapp"]: "שלום, יש לי שאלה...",
+    ["Phone to pay :"]: "מספר טלפון לתשלום (ספיר עוזר) :",
+    ["PayWay :"]: "תשלום :",
   };
   englishDico: Dictionary<string> = {
     ["price"]: 'price',
@@ -29,7 +37,15 @@ export class TranslateServiceService {
     ["Add to cart"]: 'Add to cart',
     ["Description"]: 'Description',
     ["Choose size"]: 'Choose size',
-    ["Choose quantity"]: 'Choose quantity'
+    ["Choose quantity"]: 'Choose quantity',
+    ["Cart is empty!"]: 'Cart is empty!',
+    ["Total: "]: "Total: ",
+    ["To Payment :"]: "To Payment :",
+    ["Need help? Ask us"]: "Need help? Ask us",
+    ["Payment text"]: "You don't need to pay by credit card via the website, you can pay via one of the following payment platform or by cash on delivery.",
+    ["Whatsapp"]: "Hi, I have a question ...",
+    ["Phone to pay :"]: "Phone number to make payment (Sapir Ozer)",
+    ["PayWay :"]: "Payment :",
   };
   public currentLanguage: LanguageEnum = LanguageEnum.English;
   

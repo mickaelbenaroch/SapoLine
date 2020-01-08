@@ -1,0 +1,17 @@
+<div class="body" [ngClass]="{'hebrew': this.langService.currentLanguage === this.languageEnum.English}">
+    <header class="close-div">
+      <span>{{langService.translate('PayWay :')}}</span>
+      <img src="/assets/images/close.svg" (click)="close()"/>
+    </header>
+    <main>{{langService.translate('Payment text')}}</main>
+    <footer>
+        <img class="paybox" src="/assets/images/paybox.png" (click)="paybox()"/>
+        <img class="pay" src="/assets/images/pepper.jpeg" (click)="pepper()"/>
+        <img class="pay" src="/assets/images/bit.jpeg" (click)="bit()"/>
+    </footer>
+    <div class="phone">{{langService.translate('Phone to pay :')}} <span>{{phoneToPay}}</span></div>
+    <section>
+        <span>{{langService.translate('Need help? Ask us')}}</span>
+        <img class="whatsapp" src="/assets/images/whatsapp.jpeg" (click)="whatsapp()"/>
+    </section>
+</div>

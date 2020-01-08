@@ -1,5 +1,5 @@
 <div class="envelop">
-  <div class="square" *ngFor="let item of items">
+  <div class="square" [ngClass]="{'hebrew': this.langService.currentLanguage === this.languageEnum.English}"  *ngFor="let item of items">
     <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.picture)" (click)="enterItem(item)"/>
     <div class="div-1">
       <div class="description" (click)="enterItem(item)">

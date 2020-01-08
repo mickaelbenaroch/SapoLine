@@ -3,6 +3,7 @@ import { CategoryEnum } from 'src/app/enums/categories-enum';
 import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
 import { LanguageEnum } from 'src/app/enums/language-enum';
 import { ItemServiceService } from 'src/app/services/item-service/item-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -15,7 +16,8 @@ export class MenuComponent implements OnInit {
   public hamburger: boolean;
   @Output() menuClickEvent: EventEmitter<CategoryEnum> = new EventEmitter();
   constructor(public langService: TranslateServiceService,
-              public itemService: ItemServiceService) { }
+              public itemService: ItemServiceService,
+              public router: Router) { }
 
   ngOnInit() {
   }
@@ -61,5 +63,9 @@ export class MenuComponent implements OnInit {
         this.langService.currentLanguage = LanguageEnum.English;
         break;
     }
+  }
+
+  openCart(): void {
+    this.router.navigateByUrl('cart');
   }
 }

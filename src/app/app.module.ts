@@ -26,9 +26,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemDetailComponent } from './components/item-detail/item-detail.component'
 import { ItemServiceService } from './services/item-service/item-service.service';
 import { MatDialogModule } from '@angular/material/dialog';
-import { BuyModalComponent } from './modal/buy-modal/buy-modal.component';
+import { BuyModalComponent } from './components/modal/buy-modal/buy-modal/buy-modal.component';
 import { FormsModule } from '@angular/forms';
 import { TranslateServiceService } from './services/translate/translate-service.service';
+import { CartComponent } from './components/cart/cart.component';
+import { PaymentMethodsComponent } from './components/modal/payment-methods/payment-methods.component';
 
 const appRoutes: Routes = [
   { path: '' , component: MainPageComponent},
@@ -39,6 +41,7 @@ const appRoutes: Routes = [
   { path: 'dresses', component: DressesComponent},
   { path: 'jackets', component: JacketsComponent},
   { path: 'itemDetail', component: ItemDetailComponent},
+  { path: 'cart', component: CartComponent}
 ];
 
 @NgModule({
@@ -58,7 +61,9 @@ const appRoutes: Routes = [
     ItemsDisplayerComponent,
     SingleItemComponent,
     ItemDetailComponent,
-    BuyModalComponent
+    BuyModalComponent,
+    CartComponent,
+    PaymentMethodsComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +92,8 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    BuyModalComponent
+    BuyModalComponent,
+    PaymentMethodsComponent
   ]
 })
 export class AppModule { }

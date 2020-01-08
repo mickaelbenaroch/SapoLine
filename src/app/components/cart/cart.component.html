@@ -1,0 +1,26 @@
+<div class="envelop">
+  <header>
+    <app-header></app-header>
+    <app-menu (menuClickEvent)="itemMenuClicked($event)"></app-menu>
+  </header>
+  <div class="div-1" *ngIf="itemService && itemService.cartOrderCounter">
+    <section class="empty" *ngIf="itemService.cartOrderCounter.length === 0">{{langService.translate('Cart is empty!')}}</section>
+    <section class="item" *ngFor="let item of itemService.cartOrderCounter">
+      <div>{{item.name}}</div>
+      <div class="img-div">
+        <img class="img" [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.picture)"/>
+      </div>
+      <div>X</div>
+      <div>{{item.choosedSize}}</div>
+      <div>{{item.quantity}}</div>
+    </section>
+    <section class="total">
+      <div>{{langService.translate('Total: ')}}</div>
+      <div>{{total}}</div>
+    </section>
+    <section class="pay" (click)="toPayment()" [ngClass]="{'hebrew': this.langService.currentLanguage === this.languageEnum.English}">
+      <img src="/assets/images/hand.svg"/>
+      <div>{{langService.translate('To Payment :')}}</div>
+    </section>
+  </div>
+</div>

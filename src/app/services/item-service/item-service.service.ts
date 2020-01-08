@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ItemModel } from 'src/app/models/ItemModel';
 import { MatDialog } from '@angular/material/dialog';
-import { BuyModalComponent } from 'src/app/modal/buy-modal/buy-modal.component';
+import { BuyModalComponent } from 'src/app/components/modal/buy-modal/buy-modal/buy-modal.component';
 
 @Injectable()
 export class ItemServiceService {
