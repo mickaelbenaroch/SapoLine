@@ -3,6 +3,7 @@ import { CategoryEnum } from 'src/app/enums/categories-enum';
 import { Router } from '@angular/router';
 import { HttpServiceService } from 'src/app/services/http-service/http-service.service';
 import { ItemModel } from 'src/app/models/ItemModel';
+import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
 
 @Component({
   selector: 'app-shoes',
@@ -12,7 +13,8 @@ import { ItemModel } from 'src/app/models/ItemModel';
 export class ShoesComponent implements OnInit {
   public items: ItemModel[] = [];
   constructor(public router: Router, 
-             public httpService: HttpServiceService) { }
+             public httpService: HttpServiceService,
+             public langService: TranslateServiceService) { }
 
   ngOnInit() {
     let obj = {

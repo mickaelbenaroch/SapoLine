@@ -30,31 +30,31 @@
 </div>
 
 <button mat-icon-button [matMenuTriggerFor]="menu" class="but" aria-label="Example icon-button with a menu">
-  <mat-icon>more_vert</mat-icon>
+  <mat-icon>menu</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="enterItem('Shirts&Tops')">
-    <mat-icon>notifications_off</mat-icon>
+    <mat-icon><img src="/assets/images/shirt.svg"/></mat-icon>
     <span>{{langService.translate('Shirts & Tops')}}</span>
   </button>
   <button mat-menu-item (click)="enterItem('Pants&Bottoms')">
-    <mat-icon>notifications_off</mat-icon>
+    <mat-icon><img src="/assets/images/pant.svg"/></mat-icon>
     <span>{{langService.translate('Pants & Bottoms')}}</span>
   </button>
   <button mat-menu-item (click)="enterItem('Coats&Jackets')">
-    <mat-icon>notifications_off</mat-icon>
+    <mat-icon><img src="/assets/images/coat.svg"/></mat-icon>
     <span>{{langService.translate('Coats & Jackets')}}</span>
   </button>
   <button mat-menu-item (click)="enterItem('Dresses')"> 
-    <mat-icon>notifications_off</mat-icon>
+    <mat-icon><img src="/assets/images/dress.svg"/></mat-icon>
     <span>{{langService.translate('Dresses')}}</span>
   </button>
   <button mat-menu-item (click)="enterItem('Shoes&Bags')">
-    <mat-icon>notifications_off</mat-icon>
+    <mat-icon><img src="/assets/images/shoes.svg"/></mat-icon>
     <span>{{langService.translate('Shoes & Bags')}}</span>
   </button>
   <button mat-menu-item (click)="enterItem('Accessories')">
-    <mat-icon>notifications_off</mat-icon>
+    <mat-icon><img src="/assets/images/accessories.svg"/></mat-icon>
     <span>{{langService.translate('Accessories')}}</span>
   </button>
   <div class="mob-lang">

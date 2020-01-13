@@ -2,6 +2,9 @@
     background-color: darkgrey;
     .div-1 {
         padding-top: 100px;
+        .title {
+            text-align: center;
+        }
     }
     app-menu {
         text-align: right;

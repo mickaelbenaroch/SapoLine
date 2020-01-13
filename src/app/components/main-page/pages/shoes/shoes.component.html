@@ -2,6 +2,9 @@
   <app-header></app-header>
   <app-menu (menuClickEvent)="itemMenuClicked($event)"></app-menu>
   <div class="div-1">
+    <div class="title">
+      <h1>{{langService.translate('Shoes & Bags')}}</h1>
+    </div>
     <app-items-displayer [items]="items" (buyClickEvent)="buyEvent($event)"></app-items-displayer>
   </div>
 </div>

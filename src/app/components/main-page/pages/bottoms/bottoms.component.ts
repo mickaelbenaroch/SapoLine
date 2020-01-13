@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryEnum } from 'src/app/enums/categories-enum';
 import { Router } from '@angular/router';
+import { ItemModel } from 'src/app/models/ItemModel';
+import { HttpServiceService } from 'src/app/services/http-service/http-service.service';
+import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
 
 @Component({
   selector: 'app-bottoms',
@@ -9,9 +12,18 @@ import { Router } from '@angular/router';
 })
 export class BottomsComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  public items: ItemModel[] = [];
+  constructor(public router: Router, 
+             public httpService: HttpServiceService,
+             public langService: TranslateServiceService) { }
 
   ngOnInit() {
+    let obj = {
+      category_id: '10006'
+    }
+    this.httpService.httpPost("item/getItems",obj).subscribe(res => {
+      this.items = res.item;
+    })
   }
 
   itemMenuClicked(ev: string): void {
@@ -37,6 +49,10 @@ export class BottomsComponent implements OnInit {
           break;
       }
     }
+  }
+
+  buyEvent(item: ItemModel): void {
+    console.log(item);
   }
 
 }

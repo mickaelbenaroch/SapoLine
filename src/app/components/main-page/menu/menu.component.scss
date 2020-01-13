@@ -82,6 +82,14 @@ button, mat-menu {
             align-self: center;
         }
     }
+    mat-icon {
+        img {
+            width: 25px;
+            height: 25px;
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+    }
 }
 
 ::ng-deep .mat-menu-panel {
@@ -93,4 +101,18 @@ button, mat-menu {
     font-family: 'Amatic SC', cursive;
     font-size: 22px;
     cursor: pointer;
+    text-align: right !important;
+    direction: rtl !important;
+}
+
+::ng-deep .mat-menu-item:hover {
+    background: wheat !important;
+}
+::ng-deep .mat-menu-item:active {
+    background: wheat !important;
+}
+
+.circle span:hover {
+    font-size: 22px !important;
+    background-color: black !important;
 }
