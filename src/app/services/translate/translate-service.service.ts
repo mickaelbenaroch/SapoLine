@@ -25,6 +25,7 @@ export class TranslateServiceService {
     ["Whatsapp"]: "שלום, יש לי שאלה...",
     ["Phone to pay :"]: "מספר טלפון לתשלום (ספיר עוזר) :",
     ["PayWay :"]: "תשלום :",
+    ["Choose color :"]: "בחר צבע:"
   };
   englishDico: Dictionary<string> = {
     ["price"]: 'price',
@@ -46,6 +47,7 @@ export class TranslateServiceService {
     ["Whatsapp"]: "Hi, I have a question ...",
     ["Phone to pay :"]: "Phone number to make payment (Sapir Ozer)",
     ["PayWay :"]: "Payment :",
+    ["Choose color :"]: "Choose color :"
   };
   public currentLanguage: LanguageEnum = LanguageEnum.English;
   

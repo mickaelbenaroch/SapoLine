@@ -10,4 +10,7 @@ export class ItemModel {
     public sizes: string;
     public quantity: number;
     public choosedSize: string;
+    public colors: string;
+    public choosedColor: string;
+    public mainPicture: string;
 }

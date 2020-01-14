@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ItemModel } from 'src/app/models/ItemModel';
 import { HttpServiceService } from 'src/app/services/http-service/http-service.service';
 import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
+import { LanguageEnum } from 'src/app/enums/language-enum';
 
 @Component({
   selector: 'app-tops',
@@ -13,6 +14,7 @@ import { TranslateServiceService } from 'src/app/services/translate/translate-se
 export class TopsComponent implements OnInit {
 
   public items: ItemModel[] = [];
+  public languageEnum = LanguageEnum;
   constructor(public router: Router, 
              public httpService: HttpServiceService,
              public langService: TranslateServiceService) { }
@@ -23,6 +25,13 @@ export class TopsComponent implements OnInit {
     }
     this.httpService.httpPost("item/getItems",obj).subscribe(res => {
       this.items = res.item;
+      this.items.forEach(item => {
+        if (this.langService.currentLanguage === this.languageEnum.English) {
+          item.price += '₪';
+        } else {
+          item.price += 'NIS'
+        }
+      });
     })
   }
 

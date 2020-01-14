@@ -5,6 +5,7 @@
   </header>
   <div class="div-1" [ngClass]="{'hebrew': this.langService.currentLanguage === this.languageEnum.English}">
     <div class="left-panel" [ngClass]="{'left-usa': this.langService.currentLanguage === this.languageEnum.Hebrew}" *ngIf="currentItem">
+        <div style="font-size: 23px; font-weight: bold; text-align: center;">{{currentItem.name}}:</div>
         <div style="font-size: 23px; font-weight: bold">{{langService.translate('Description')}}:</div>
         <p class="desc" *ngIf="this.langService.currentLanguage === this.languageEnum.English">{{currentItem.description}}</p>
         <p class="desc" *ngIf="this.langService.currentLanguage === this.languageEnum.Hebrew">{{currentItem.descriptionEnglish}}</p>
@@ -13,6 +14,12 @@
                 <div>{{langService.translate('Choose size')}}:</div>
                 <select>
                     <option *ngFor="let size of sizes" value="size" [(ngModel)]="currentItem.choosedSize" ngDefaultControl name="size">{{size}}</option>
+                </select>
+            </div>
+            <div class="dd">
+                <div>{{langService.translate('Choose color :')}}:</div>
+                <select>
+                    <option *ngFor="let color of colors" value="color" [(ngModel)]="currentItem.choosedColor" ngDefaultControl name="color">{{color}}</option>
                 </select>
             </div>
             <div class="dd">
@@ -26,17 +33,8 @@
         </div>
     </div>
     <div class="rigth-panel" [ngClass]="{'padding-left-3rem': this.langService.currentLanguage === this.languageEnum.Hebrew}" *ngIf="currentItem">
-        <div>
-            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(currentItem.picture)"/>
-        </div>
-        <div>
-            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(currentItem.picture)"/>
-        </div>
-        <div>
-            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(currentItem.picture)"/>
-        </div>
-        <div>
-            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(currentItem.picture)"/>
+        <div *ngFor="let pic of pictures">
+            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(pic)"/>
         </div>
     </div>
   </div>

@@ -16,7 +16,9 @@ export class ItemDetailComponent implements OnInit {
 
   public currentItem: ItemModel;
   public languageEnum = LanguageEnum;
+  public colors: string[] = [];
   public sizes: string[] = [];
+  public pictures: string[] = [];
   constructor(public itemService: ItemServiceService,
               public _DomSanitizationService: DomSanitizer,
               public router: Router,
@@ -30,6 +32,8 @@ export class ItemDetailComponent implements OnInit {
       this.router.navigateByUrl('/');
     }
     this.splitSizes();
+    this.splitcColors();
+    this.splitPictures();
     if (this.currentItem) {
       this.currentItem.choosedSize = this.sizes[0];
     }
@@ -73,13 +77,15 @@ export class ItemDetailComponent implements OnInit {
   }
 
   splitSizes() : void {
-    if (this.currentItem && this.currentItem.sizes) {
+    if (this.currentItem && this.currentItem.sizes && this.currentItem.sizes.includes(',')) {
       let temp = this.currentItem.sizes.split(',');
       temp.forEach(char => {
         if (char !== ',') {
           this.sizes.push(char);
         }
       })
+    } else if (this.currentItem && this.currentItem.sizes && !this.currentItem.sizes.includes(',')) {
+      this.sizes.push(this.currentItem.sizes);
     }
   }
   
@@ -92,5 +98,31 @@ export class ItemDetailComponent implements OnInit {
          return true;
     } 
     return false; 
+  }
+
+  splitcColors(): void {
+    if (this.currentItem && this.currentItem.colors && this.currentItem.colors.includes(',')) {
+      let temp = this.currentItem.colors.split(',');
+      temp.forEach(char => {
+        if (char !== ',') {
+          this.colors.push(char);
+        }
+      })
+    } else if (this.currentItem && this.currentItem.colors && !this.currentItem.colors.includes(',')) {
+      this.colors.push(this.currentItem.colors);
+    }
+  }
+
+  splitPictures(): void {
+    if (this.currentItem && this.currentItem.picture && this.currentItem.picture.includes('+')) {
+      let temp = this.currentItem.picture.split('+');
+      temp.forEach(char => {
+        if (char !== ',') {
+          this.pictures.push(char);
+        }
+      })
+    } else if (this.currentItem && this.currentItem.picture && !this.currentItem.picture.includes('+')) {
+      this.pictures.push(this.currentItem.picture);
+    }
   }
 }
