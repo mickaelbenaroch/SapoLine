@@ -28,7 +28,7 @@ export class CartComponent implements OnInit {
       this.itemService.cartOrderCounter.forEach(item => {
         let temp = [];
         let fixed = '';
-        if (item.price.incudes(',')) {
+        if (item.price.includes(',')) {
           temp = item.price.split(',');
           if (temp.length === 2) {
             fixed = temp[0] + '.' + temp[1];
