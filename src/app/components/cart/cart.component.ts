@@ -34,7 +34,12 @@ export class CartComponent implements OnInit {
             fixed = temp[0] + '.' + temp[1];
           }
         }
-        this.total += Number(fixed) * Number(item.quantity)
+        console.log('before total:' + this.total);
+        console.log('before fixed:' + fixed);
+        console.log('before number fixed:' + Number(fixed));
+        console.log('before quantity:' + quantity);
+        console.log('before number quantity:' + Number(item.quantity));
+        this.total += (Number(fixed) * Number(item.quantity))
       });
     }
   }
