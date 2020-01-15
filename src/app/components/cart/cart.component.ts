@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
         let fixed = '';
         if (item.price.includes(',')) {
           temp = item.price.split(',');
-          if (temp.length === 2) {
+          if (temp.length >= 2) {
             fixed = temp[0] + '.' + temp[1];
           }
         }
