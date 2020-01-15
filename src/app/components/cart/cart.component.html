@@ -8,7 +8,7 @@
     <section class="item" *ngFor="let item of itemService.cartOrderCounter">
       <div>{{item.name}}</div>
       <div class="img-div">
-        <img class="img" [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.picture)"/>
+        <img class="img" [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.mainPicture)"/>
       </div>
       <div>X</div>
       <div>{{item.choosedSize}}</div>
