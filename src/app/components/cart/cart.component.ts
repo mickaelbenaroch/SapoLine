@@ -37,7 +37,7 @@ export class CartComponent implements OnInit {
         console.log('before total:' + this.total);
         console.log('before fixed:' + fixed);
         console.log('before number fixed:' + Number(fixed));
-        console.log('before quantity:' + quantity);
+        console.log('before quantity:' + item.quantity);
         console.log('before number quantity:' + Number(item.quantity));
         this.total += (Number(fixed) * Number(item.quantity))
       });
