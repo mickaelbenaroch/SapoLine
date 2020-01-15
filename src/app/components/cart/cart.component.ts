@@ -31,14 +31,14 @@ export class CartComponent implements OnInit {
         if (item.price.includes(',')) {
           temp = item.price.split(',');
           if (temp.length >= 2) {
+            if (temp[1].includes('₪')) {
+               temp[1] = temp[1].substring(0, temp[1].length - 1);
+            } else {
+              temp[1] = temp[1].substring(0, temp[1].length - 3);
+            }
             fixed = temp[0] + '.' + temp[1];
           }
         }
-        console.log('before total:' + this.total);
-        console.log('before fixed:' + fixed);
-        console.log('before number fixed:' + Number(fixed));
-        console.log('before quantity:' + item.quantity);
-        console.log('before number quantity:' + Number(item.quantity));
         this.total += (Number(fixed) * Number(item.quantity))
       });
     }
