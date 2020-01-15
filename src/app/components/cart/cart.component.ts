@@ -25,7 +25,17 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     if(this.itemService && this.itemService.cartOrderCounter) {
-      this.itemService.cartOrderCounter.forEach(item => this.total += Number(item.price) * Number(item.quantity));
+      this.itemService.cartOrderCounter.forEach(item => {
+        let temp = [];
+        let fixed = '';
+        if (item.price.incudes(',')) {
+          temp = item.price.split(',');
+          if (temp.length === 2) {
+            fixed = temp[0] + '.' + temp[1];
+          }
+        }
+        this.total += Number(fixed) * Number(item.quantity)
+      });
     }
   }
 
