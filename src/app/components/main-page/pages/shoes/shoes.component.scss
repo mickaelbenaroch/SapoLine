@@ -1,5 +1,6 @@
 .envelop {
     background-color: darkgrey;
+    min-height: 100%;
     .div-1 {
         padding-top: 100px;
         .title {
@@ -21,6 +22,6 @@
         top: 10px;
     }
     .envelop {
-        height: unset;
+        height: unset !important;
     }
 }
