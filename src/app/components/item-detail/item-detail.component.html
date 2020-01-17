@@ -19,7 +19,7 @@
             <div class="dd">
                 <div>{{langService.translate('Choose color :')}}:</div>
                 <select>
-                    <option *ngFor="let color of colors" value="color" [(ngModel)]="currentItem.choosedColor" ngDefaultControl name="color">{{color}}</option>
+                    <option *ngFor="let color of colors" value="color" [(ngModel)]="currentItem.choosedColor" ngDefaultControl name="color">{{langService.translate(color)}}</option>
                 </select>
             </div>
             <div class="dd">

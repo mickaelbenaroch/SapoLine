@@ -31,6 +31,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslateServiceService } from './services/translate/translate-service.service';
 import { CartComponent } from './components/cart/cart.component';
 import { PaymentMethodsComponent } from './components/modal/payment-methods/payment-methods.component';
+import { NotificationModalComponent } from './components/modal/notification/notification-modal/notification-modal.component';
 
 const appRoutes: Routes = [
   { path: '' , component: MainPageComponent},
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     ItemDetailComponent,
     BuyModalComponent,
     CartComponent,
-    PaymentMethodsComponent
+    PaymentMethodsComponent,
+    NotificationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +95,8 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent],
   entryComponents: [
     BuyModalComponent,
-    PaymentMethodsComponent
+    PaymentMethodsComponent,
+    NotificationModalComponent
   ]
 })
 export class AppModule { }

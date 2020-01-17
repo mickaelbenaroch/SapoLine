@@ -57,10 +57,10 @@ export class MenuComponent implements OnInit {
   changeLanguageTo(language: string) : void {
     switch(language) {
       case 'hebrew':
-        this.langService.currentLanguage = LanguageEnum.Hebrew;
+        this.langService.currentLanguage = LanguageEnum.English;
         break;
       case 'usa':
-        this.langService.currentLanguage = LanguageEnum.English;
+        this.langService.currentLanguage = LanguageEnum.Hebrew;
         break;
     }
   }

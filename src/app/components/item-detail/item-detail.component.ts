@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { CategoryEnum } from 'src/app/enums/categories-enum';
 import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
 import { LanguageEnum } from 'src/app/enums/language-enum';
+import { ModalModel } from 'src/app/models/ModalModel';
+import { ModalTypeEnum } from 'src/app/enums/modal-type-enum';
 
 @Component({
   selector: 'app-item-detail',
@@ -44,6 +46,11 @@ export class ItemDetailComponent implements OnInit {
       if (this.checkValidity()) {
          console.log("item added to cart: " +  this.currentItem);
          this.itemService.addToCart(this.currentItem);
+         let modalModel: ModalModel = new ModalModel();
+         modalModel.body = this.currentItem.name + ' ' + this.langService.translate('Was Added Successfully to cart!');
+         modalModel.displayBody = true;
+         modalModel.type = ModalTypeEnum.success;
+         this.itemService.showNotification(modalModel);
       } else {
         //TODO: Handle errors on order
       }

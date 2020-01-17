@@ -1,0 +1,30 @@
+.envelop {
+    color: white;
+    font-family: 'Amatic SC', cursive;
+    main {
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .green {
+        background-color: green;
+    }
+    .orange {
+        background-color: orange;
+    }
+    .red {
+        background-color: red;
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+        img {
+            width: 15px;
+        }
+    }
+}
+.hebrew {
+    direction: rtl;
+}

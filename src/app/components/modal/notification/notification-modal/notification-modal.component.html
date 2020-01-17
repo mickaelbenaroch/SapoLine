@@ -1,0 +1,12 @@
+<div class="envelop" *ngIf="modalModel" [ngClass]="{'hebrew': this.translateService.currentLanguage === this.languageEnum.English}">
+    <header *ngIf="modalModel.displayTitle">
+        <div>{{modalModel.title}}</div>
+        <img src="/assets/images/close.svg" (click)="close()"/>
+    </header>
+    <main [ngClass]="{green: modalModel.type === 0, orange :modalModel.type === 1, red: modalModel.type === 2 }">
+        <span *ngIf="modalModel.displayBody">{{modalModel.body}}</span>    
+    </main>
+    <footer *ngIf="modalModel.displayButton">
+        <button>{{modalModel.buttonText}}</button>
+    </footer>
+</div>
