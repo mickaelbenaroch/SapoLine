@@ -11,8 +11,10 @@
         <img class="img" [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.mainPicture)"/>
       </div>
       <div>X</div>
-      <div>{{item.choosedSize}}</div>
       <div>{{item.quantity}}</div>
+      <div>{{item.choosedSize}}</div>
+      <div>=</div>
+       <div>{{item.price}}</div>
     </section>
     <section class="total">
       <div>{{langService.translate('Total: ')}}</div>
