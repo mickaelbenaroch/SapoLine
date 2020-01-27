@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ItemServiceService } from 'src/app/services/item-service/item-service.service';
 import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
 import { LanguageEnum } from 'src/app/enums/language-enum';
+import { OrderServiceService } from 'src/app/services/order/order-service.service';
 
 @Component({
   selector: 'app-items-displayer',
@@ -19,6 +20,7 @@ export class ItemsDisplayerComponent implements OnInit, OnChanges {
   constructor(public _DomSanitizationService: DomSanitizer,
               public router: Router,
               public itemService: ItemServiceService,
+              public orderService: OrderServiceService,
               public langService: TranslateServiceService) { }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class ItemsDisplayerComponent implements OnInit, OnChanges {
 
   enterItem(item: ItemModel): void {
     if (item) {
-      this.itemService.currentViewedItem = item;
+      this.orderService.currentViewedItem = item;
       this.router.navigateByUrl('itemDetail');
     }
     console.log("item clicked" + item);

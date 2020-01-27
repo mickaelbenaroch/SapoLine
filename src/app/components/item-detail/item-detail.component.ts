@@ -8,6 +8,7 @@ import { TranslateServiceService } from 'src/app/services/translate/translate-se
 import { LanguageEnum } from 'src/app/enums/language-enum';
 import { ModalModel } from 'src/app/models/ModalModel';
 import { ModalTypeEnum } from 'src/app/enums/modal-type-enum';
+import { OrderServiceService } from 'src/app/services/order/order-service.service';
 
 @Component({
   selector: 'app-item-detail',
@@ -21,14 +22,15 @@ export class ItemDetailComponent implements OnInit {
   public colors: string[] = [];
   public sizes: string[] = [];
   public pictures: string[] = [];
-  constructor(public itemService: ItemServiceService,
+  constructor(public orderService: OrderServiceService,
+              public itemService: ItemServiceService,
               public _DomSanitizationService: DomSanitizer,
               public router: Router,
               public langService: TranslateServiceService) { }
 
   ngOnInit() {
-    if (this.itemService.currentViewedItem) {
-      this.currentItem = this.itemService.currentViewedItem;
+    if (this.orderService.currentViewedItem) {
+      this.currentItem = this.orderService.currentViewedItem;
       this.currentItem.quantity = 1;
     } else {
       this.router.navigateByUrl('/');

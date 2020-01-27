@@ -3,9 +3,9 @@
     <app-header></app-header>
     <app-menu (menuClickEvent)="itemMenuClicked($event)"></app-menu>
   </header>
-  <div class="div-1" [ngClass]="{'hebrew': this.langService.currentLanguage === this.languageEnum.English}" *ngIf="itemService && itemService.cartOrderCounter">
-    <section class="empty" *ngIf="itemService.cartOrderCounter.length === 0">{{langService.translate('Cart is empty!')}}</section>
-    <section class="item" *ngFor="let item of itemService.cartOrderCounter">
+  <div class="div-1" [ngClass]="{'hebrew': this.langService.currentLanguage === this.languageEnum.English}" *ngIf="orderService && orderService.cartOrderCounter">
+    <section class="empty" *ngIf="orderService.cartOrderCounter.length === 0">{{langService.translate('Cart is empty!')}}</section>
+    <section class="item" *ngFor="let item of orderService.cartOrderCounter">
       <div>{{item.name}}</div>
       <div class="img-div" style="padding: 0">
         <img class="img" [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.mainPicture)"/>

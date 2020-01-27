@@ -30,26 +30,9 @@
             <small [ngClass]="{'hide':phoneError}">{{translateService.translate('phone error')}}</small>
         </div>
         <div class="field-group">
-            <div>{{translateService.translate('street')}}</div>
-            <input [(ngModel)]="street" name="street" (keydown)="disableError('street')"/>
-            <small [ngClass]="{'hide':streetError}">{{translateService.translate('street error')}}</small>
-        </div>
-    </div>
-    <div class="f-label">
-        <div class="field-group">
-            <div>{{translateService.translate('house number')}}</div>
-            <input [(ngModel)]="houseNumber" name="houseNumber" (keydown)="disableError('houseNumber')"/>
-            <small [ngClass]="{'hide':houseNumberError}">{{translateService.translate('house error')}}</small>
-        </div>
-        <div class="field-group">
-            <div>{{translateService.translate('city')}}</div>
-            <input [(ngModel)]="city" name="city" (keydown)="disableError('city')"/>
-            <small [ngClass]="{'hide':cityError}">{{translateService.translate('city error')}}</small>
-        </div>
-        <div class="field-group">
-            <div>{{translateService.translate('postal code')}}</div>
-            <input [(ngModel)]="postalCode" name="postalCode" (keydown)="disableError('postalCode')"/>
-            <small [ngClass]="{'hide':postalCodeError}">{{translateService.translate('postal error')}}</small>
+            <div>{{translateService.translate('address')}}</div>
+            <input [(ngModel)]="address" name="street" (keydown)="disableError('address')"/>
+            <small [ngClass]="{'hide':streetError}">{{translateService.translate('address error')}}</small>
         </div>
     </div>
     <div class="but-div">

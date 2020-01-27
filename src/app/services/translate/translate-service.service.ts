@@ -74,6 +74,10 @@ export class TranslateServiceService {
     ["city error"]: "שם עיר חסר!",
     ["postal error"]: "מיקוד חסר!",
     ["send"]: "שלח!",
+    ['address']: "כתובת מלאה:",
+    ['address error']: "כתובת חסרה!",
+    ["Order number: "]: "הזמנה מספר: ",
+    ["Was created Successfully!"]: " נוצרה בהצלחה! ",
   };
   englishDico: Dictionary<string> = {
     ["price"]: 'price',
@@ -143,7 +147,11 @@ export class TranslateServiceService {
     ["house error"]: "House Number is empty!",
     ["city error"]: "City is empty!",
     ["postal error"]: "Postal Code is invalid!",
-    ["send"]:"Send!"
+    ["send"]:"Send!",
+    ['address']: "Full Address: ",
+    ['address error']: "Address is empty!",
+    ["Order number: "]: "Order number :",
+    ["Was created Successfully!"]: "Was created Successfully!"
   };
   public currentLanguage: LanguageEnum = LanguageEnum.English;
   

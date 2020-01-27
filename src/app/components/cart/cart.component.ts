@@ -11,6 +11,7 @@ import { LoginPageComponent } from '../modal/login-page/login-page.component';
 import { AuthServiceService } from 'src/app/services/authentication/auth-service.service';
 import { AuthStatusEnum } from 'src/app/enums/auth-status-enum';
 import { BuyModalComponent } from '../modal/buy-modal/buy-modal/buy-modal.component';
+import { OrderServiceService } from 'src/app/services/order/order-service.service';
 
 @Component({
   selector: 'app-cart',
@@ -22,15 +23,15 @@ export class CartComponent implements OnInit {
   public total: number = 0;
   public languageEnum = LanguageEnum;
   constructor(public router: Router,
-              public itemService: ItemServiceService,
+              public orderService: OrderServiceService,
               public langService: TranslateServiceService,
               public _DomSanitizationService: DomSanitizer,
               public modalService: MatDialog,
               public authService: AuthServiceService) { }
 
   ngOnInit() {
-    if(this.itemService && this.itemService.cartOrderCounter) {
-      this.itemService.cartOrderCounter.forEach(item => {
+    if(this.orderService && this.orderService.cartOrderCounter) {
+      this.orderService.cartOrderCounter.forEach(item => {
         let temp = [];
         let fixed = '';
         if (item.price.includes(',')) {

@@ -38,10 +38,11 @@ export class HttpServiceService {
    * HTTP Post function.
    * @param relativePath What path to add to http call.
    */
-  public httpPost<T>(relativePath: string, body: any, options = null): Observable<any> {
-        if (options && options.headers) {
-          const headers = new HttpHeaders(options.headers);
-          return this.http.post<any>(this.apiUrl + relativePath, body, {headers}).pipe(map(
+  public httpPost<T>(relativePath: string, body: any, options?): Observable<any> {
+        if (options) {
+          let token = sessionStorage.getItem('token');
+          const headers = new HttpHeaders({'token': token});
+          return this.http.post<any>(this.apiUrl + relativePath, body, {headers: headers}).pipe(map(
             success => {
             return success
             },

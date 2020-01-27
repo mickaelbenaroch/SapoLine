@@ -4,6 +4,7 @@ import { TranslateServiceService } from 'src/app/services/translate/translate-se
 import { LanguageEnum } from 'src/app/enums/language-enum';
 import { ItemServiceService } from 'src/app/services/item-service/item-service.service';
 import { Router } from '@angular/router';
+import { OrderServiceService } from 'src/app/services/order/order-service.service';
 
 @Component({
   selector: 'app-menu',
@@ -17,7 +18,8 @@ export class MenuComponent implements OnInit {
   @Output() menuClickEvent: EventEmitter<CategoryEnum> = new EventEmitter();
   constructor(public langService: TranslateServiceService,
               public itemService: ItemServiceService,
-              public router: Router) { }
+              public router: Router,
+              public orderService: OrderServiceService) { }
 
   ngOnInit() {
   }
