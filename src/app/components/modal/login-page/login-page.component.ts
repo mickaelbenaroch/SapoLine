@@ -88,13 +88,13 @@ export class LoginPageComponent implements OnInit {
   }
   completeSignUp(): void {
     if (this.loginModel && this.loginModel.password && this.loginModel.email) {
-      this.authService.signUp(this.loginModel, true);
+      this.authService.signUp(this.loginModel);
       this.close();
     }
   }
   completeSignIn(): void {
     if (this.loginModel && this.loginModel.password && this.loginModel.email) {
-      this.authService.signin(this.loginModel, true);
+      this.authService.signin(this.loginModel);
       this.close();
     }
   }

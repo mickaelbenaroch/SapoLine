@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { LoginModel } from 'src/app/models/LoginModel';
 import { HttpServiceService } from '../http-service/http-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { GeneralDialogPopupComponent } from 'src/app/components/modal/general/general-dialog-popup/general-dialog-popup.component';
 import { Router } from '@angular/router';
 import { AuthStatusEnum } from 'src/app/enums/auth-status-enum';
+import { BuyModalComponent } from 'src/app/components/modal/buy-modal/buy-modal/buy-modal.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthServiceService implements OnInit {
   private token: string;
   private exp: number;
   public loginModel: LoginModel;
@@ -18,8 +19,12 @@ export class AuthServiceService {
   constructor(private httpService: HttpServiceService,
               private modalService: MatDialog,
               private router: Router) { }
+  
+  ngOnInit(): void {
 
-  signin(user: LoginModel, goToCart?: boolean): void {
+  }
+
+  signin(user: LoginModel): void {
     if (user && user.email && user.password) {
       this.httpService.httpPost('login/signin', user).subscribe(res => {
         if (res && res.isValid && res.data && res.data.token) {
@@ -27,9 +32,7 @@ export class AuthServiceService {
           this.token = res.data.token;
           this.exp = res.data.maxAge;
           this.saveAuthDetails();
-          if (goToCart) {
-            this.router.navigateByUrl('/cart');
-          }
+          this.openBuyPopup();
         } else {
           this.openErrorModal();
         }
@@ -39,17 +42,15 @@ export class AuthServiceService {
     } 
   } 
 
-  signUp(user: LoginModel, goToCart?: boolean): void {
+  signUp(user: LoginModel): void {
     if (user && user.email && user.password) {
       this.httpService.httpPost('login/newuser', user).subscribe(res => {
-        if (res && res.isValid && res.data && res.data.token) {
+        if (res && res.isValid && res.user && res.user.token) {
           this.timeStamp = new Date().getTime();
-          this.token = res.data.token;
-          this.exp = res.data.maxAge;
+          this.token = res.user.token;
+          this.exp = res.user.maxAge;
           this.saveAuthDetails();
-          if (goToCart) {
-            this.router.navigateByUrl('/cart');
-          }
+          this.openBuyPopup();
         } else {
           if (res && !res.isValid) {
             this.openErrorModal(res.error);
@@ -69,6 +70,11 @@ export class AuthServiceService {
       data: {message: message }
     });
   }
+  setToken(token: string) : void {
+    if (token) {
+      this.token = token;
+    }
+  }
 
   getToken(): string {
     return this.token;
@@ -80,26 +86,25 @@ export class AuthServiceService {
 
   getAuthStatus(): AuthStatusEnum {
     let status: AuthStatusEnum = AuthStatusEnum.Unauthorized;
-    let now = new Date().getTime();
-    if (!this.timeStamp) {
+    if (!this.token) {
       status = AuthStatusEnum.Unauthorized;
       return status;
     } else {
-      let diff = now - this.timeStamp;
-      if (this.token && diff < this.exp ) {
         status = AuthStatusEnum.Authorized;
-      } else if (this.token && diff < this.exp) {
-        status = AuthStatusEnum.NeedRefresh;
-      } else {
-        status = AuthStatusEnum.Authorized;
-      }
-      return status;
-    }
+        return status;
+    } 
   }
+
   saveAuthDetails(): void {
     if (this.token && this.exp) {
       sessionStorage.setItem('token',this.token);
-      sessionStorage.setItem('exp', this.exp.toString());
     }
+  }
+
+  openBuyPopup(): void {
+    const dialogRef = this.modalService.open(BuyModalComponent, {
+      width: '550px',
+      data: { }
+    });
   }
 }

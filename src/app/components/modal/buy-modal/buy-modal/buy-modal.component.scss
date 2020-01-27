@@ -5,6 +5,10 @@
         justify-content: space-between;
         img {
             width: 15px;
+            cursor: pointer;
+        }
+        h2 {
+            margin: 0;
         }
     }
     form {
@@ -89,4 +93,9 @@
             }
         }
     }
+}
+
+.hebrew {
+    direction: rtl;
+    text-align: right;
 }

@@ -5,6 +5,7 @@ import { HttpServiceService } from 'src/app/services/http-service/http-service.s
 import { UserModel } from 'src/app/models/UserModel';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
+import { LanguageEnum } from 'src/app/enums/language-enum';
 
 @Component({
   selector: 'app-buy-modal',
@@ -30,6 +31,7 @@ export class BuyModalComponent implements OnInit {
   public houseNumber: string;
   public city: string;
   public postalCode: string;
+  public languageEnum = LanguageEnum;
   constructor(public dialogRef: MatDialogRef<BuyModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: BuyModalComponent,
     public httpService: HttpServiceService,

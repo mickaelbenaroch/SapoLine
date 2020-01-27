@@ -55,10 +55,7 @@ export class CartComponent implements OnInit {
     switch (authStatus) {
       case AuthStatusEnum.Authorized:
       this.router.navigateByUrl('/cart');
-      const dialogRef0 = this.modalService.open(BuyModalComponent, {
-        width: '550px',
-        data: { }
-      });
+      this.authService.openBuyPopup();
       break;
       case AuthStatusEnum.Unauthorized:
       signUpMode = true;
@@ -66,13 +63,6 @@ export class CartComponent implements OnInit {
         width: '320px',
         height: '440px',
         data: { signUpMode: signUpMode }
-      }).afterClosed().subscribe(() => {
-        if (this.authService.getAuthStatus() === AuthStatusEnum.Authorized) {
-          const dialogRef = this.modalService.open(BuyModalComponent, {
-            width: '550px',
-            data: { }
-          });
-        }
       });
       break;
       case AuthStatusEnum.NeedRefresh:
@@ -81,13 +71,6 @@ export class CartComponent implements OnInit {
         width: '320px',
         height: '440px',
         data: { signUpMode: signUpMode }
-      }).afterClosed().subscribe(() => {
-        if (this.authService.getAuthStatus() === AuthStatusEnum.Authorized) {
-          const dialogRef2 = this.modalService.open(BuyModalComponent, {
-            width: '550px',
-            data: { }
-          });
-        }
       });
       break;
     }

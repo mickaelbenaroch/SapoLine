@@ -1,61 +1,59 @@
-<div class="envelop">
+<div class="envelop" [ngClass]="{'hebrew': translateService.currentLanguage === languageEnum.English}">
     <div class="close-div">
-      <h2>Buy Item</h2>
+      <h2>{{translateService.translate('confirm order')}}</h2>
       <img src="/assets/images/close.svg" (click)="close()"/>
     </div>
-    <h3>{{item.name}}</h3>
-    <h4>{{this.translateService.translate('price')}}: {{item.price}}</h4>
     <form>
     <div class="f-label">
         <div class="field-group">
-            <div>First Name:</div>
+            <div>{{translateService.translate('first name')}}</div>
             <input [(ngModel)]="fname" name="fname" (keydown)="disableError('fname')"/>
-            <small [ngClass]="{'hide':fnameError}">First name is empty!</small>
+            <small [ngClass]="{'hide':fnameError}">{{translateService.translate('fname error')}}</small>
         </div>
         <div class="field-group">
-            <div>Last Name:</div>
+            <div>{{translateService.translate('last name')}}</div>
             <input [(ngModel)]="lname" name="lname" (keydown)="disableError('lname')"/>
-            <small [ngClass]="{'hide':lnameError}">Last name is empty!</small>
+            <small [ngClass]="{'hide':lnameError}">{{translateService.translate('lname error')}}</small>
         </div>
     </div>
     <div class="f-label email">
         <div class="field-group">
-            <div>Email:</div>
+            <div>{{translateService.translate('email')}}</div>
             <input class="email" [(ngModel)]="email" name="email" (keydown)="disableError('email')"/>
-            <small [ngClass]="{'hide':emailError}" class="email">Email is invalid!</small>
+            <small [ngClass]="{'hide':emailError}" class="email">{{translateService.translate('email error')}}</small>
         </div>
     </div>
     <div class="f-label">
         <div class="field-group">
-            <div>Phone Number:</div>
+            <div>{{translateService.translate('phone number')}}</div>
             <input [(ngModel)]="phone" name="phone" (keydown)="disableError('phone')"/>
-            <small [ngClass]="{'hide':phoneError}">Phone number is invalid!</small>
+            <small [ngClass]="{'hide':phoneError}">{{translateService.translate('phone error')}}</small>
         </div>
         <div class="field-group">
-            <div>Street Name:</div>
+            <div>{{translateService.translate('street')}}</div>
             <input [(ngModel)]="street" name="street" (keydown)="disableError('street')"/>
-            <small [ngClass]="{'hide':streetError}">Street is empty!</small>
+            <small [ngClass]="{'hide':streetError}">{{translateService.translate('street error')}}</small>
         </div>
     </div>
     <div class="f-label">
         <div class="field-group">
-            <div>House Number:</div>
+            <div>{{translateService.translate('house number')}}</div>
             <input [(ngModel)]="houseNumber" name="houseNumber" (keydown)="disableError('houseNumber')"/>
-            <small [ngClass]="{'hide':houseNumberError}">House Number is empty!</small>
+            <small [ngClass]="{'hide':houseNumberError}">{{translateService.translate('house error')}}</small>
         </div>
         <div class="field-group">
-            <div>City:</div>
+            <div>{{translateService.translate('city')}}</div>
             <input [(ngModel)]="city" name="city" (keydown)="disableError('city')"/>
-            <small [ngClass]="{'hide':cityError}">City is empty!</small>
+            <small [ngClass]="{'hide':cityError}">{{translateService.translate('city error')}}</small>
         </div>
         <div class="field-group">
-            <div>Postal Code:</div>
+            <div>{{translateService.translate('postal code')}}</div>
             <input [(ngModel)]="postalCode" name="postalCode" (keydown)="disableError('postalCode')"/>
-            <small [ngClass]="{'hide':postalCodeError}">Postal Code is empty!</small>
+            <small [ngClass]="{'hide':postalCodeError}">{{translateService.translate('postal error')}}</small>
         </div>
     </div>
     <div class="but-div">
-        <button (click)="send()">Send!</button>
+        <button (click)="send()">{{translateService.translate('send')}}</button>
     </div>
     </form>
 </div>

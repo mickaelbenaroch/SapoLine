@@ -23,9 +23,9 @@
         <div class="submit">
             <button type="submit" (click)="submit()">{{translateService.translate('enter')}}</button>
         </div>
-        <div class="forgot">
+        <div class="forgot" [ngClass]="{'center': signUpMode}">
             <span style="cursor: pointer;" (click)="forgotPassword()">{{translateService.translate('forgot password')}}</span>
-            <div class="text" [ngClass]="{'hide': signUpMode}">
+            <div class="text" [ngClass]="{'hide': signUpMode, 'special-hide': signUpMode}">
                 <span>{{translateService.translate('not a member')}}</span>
                 <span style="color: black; font-weight: bold; cursor: pointer;" (click)="switchToRegister()">{{translateService.translate('join us')}}</span>
             </div>

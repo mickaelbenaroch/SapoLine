@@ -56,7 +56,24 @@ export class TranslateServiceService {
     ["mail error"]: "אימייל לא תקין!",
     ["something went wrong"]: "משהו השתבש!",
     ["got it"]: "הבנתי!",
-    ["oops"]: "אופס!"
+    ["oops"]: "אופס!",
+    ["confirm order"]: "אישור ההזמנה",
+    ["first name"]: "שם פרטי:",
+    ["last name"]: "שם משפחה:",
+    ["phone number"]: "מספר טלפון:",
+    ["street"]: "רחוב:",
+    ["house number"]: "מספר בית:",
+    ["city"]: "שם עיר:",
+    ["postal code"]: "מיקוד:",
+    ["fname error"]: "שם פרטי חסר!",
+    ["lname error"]: "שם משפחה חסר!",
+    ["email error"]: "אימייל לא תקין!",
+    ["phone error"]: "מספר טלפון לא תקין!",
+    ["street error"]: "שם רחוב חסר!",
+    ["house error"]: "מספר בית חסר!",
+    ["city error"]: "שם עיר חסר!",
+    ["postal error"]: "מיקוד חסר!",
+    ["send"]: "שלח!",
   };
   englishDico: Dictionary<string> = {
     ["price"]: 'price',
@@ -109,7 +126,24 @@ export class TranslateServiceService {
     ["mail error"]: "Email is invalid!",
     ["something went wrong"]: "Something went wrong! Try again!",
     ["got it"]: "I got it!",
-    ["oops"]: "Oops!"
+    ["oops"]: "Oops!",
+    ["confirm order"]:"Order Confirmation",
+    ["first name"]: "First Name:",
+    ["last name"]: "Last Name:",
+    ["phone number"]: "Phone Number:",
+    ["street"]: "Street:",
+    ["house number"]: "House Number:",
+    ["city"]: "City:",
+    ["postal code"]: "Postal Code:",
+    ["fname error"]: "First Name is empty!",
+    ["lname error"]: "Last Name is empty!",
+    ["email error"]: "Email is invalid!",
+    ["phone error"]: "Phone Number is invalid!",
+    ["street error"]: "Street Name is empty!",
+    ["house error"]: "House Number is empty!",
+    ["city error"]: "City is empty!",
+    ["postal error"]: "Postal Code is invalid!",
+    ["send"]:"Send!"
   };
   public currentLanguage: LanguageEnum = LanguageEnum.English;
   
