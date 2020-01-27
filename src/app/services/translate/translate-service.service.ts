@@ -42,6 +42,21 @@ export class TranslateServiceService {
     ["grey"]: "אפור",
     ["rose"]: "ורוד",
     ["camel"]: "קאמל",
+    ["signin"]: "התחבר",
+    ["signup"]: "הירשם",
+    ["email"]: "אימייל:",
+    ["password"]: "סיסמא:",
+    ["confirm password"]: "אישור סיסמא:",
+    ["forgot password"]: "שחכתי סיסמא",
+    ["enter"]: "כניסה!",
+    ["not a member"]: "עדיין לא הצטרפת? ",
+    ["join us"]: "הירשם כאן",
+    ["password not same"]: "הסיסמאות לא תואמות!",
+    ["password error"]:"הסיסמא צריכה להיות לפחות 8 תווים!",
+    ["mail error"]: "אימייל לא תקין!",
+    ["something went wrong"]: "משהו השתבש!",
+    ["got it"]: "הבנתי!",
+    ["oops"]: "אופס!"
   };
   englishDico: Dictionary<string> = {
     ["price"]: 'price',
@@ -80,6 +95,21 @@ export class TranslateServiceService {
     ["grey"]: "grey",
     ["rose"]: "rose",
     ["camel"]: "camel",
+    ["signin"]: "Sign-In",
+    ["signup"]: "Sign-Up",
+    ["email"]: "Email:",
+    ["password"]: "Passsword:",
+    ["confirm password"]: "Confirm Password: ",
+    ["forgot password"]: "Forgot Password? ",
+    ["enter"]: "Enter!",
+    ["not a member"]: "Not a member? ",
+    ["join us"]: "Join us",
+    ["password not same"]: "Password are not the same!",
+    ["password error"]:"Password must be aat least 8 characters!",
+    ["mail error"]: "Email is invalid!",
+    ["something went wrong"]: "Something went wrong! Try again!",
+    ["got it"]: "I got it!",
+    ["oops"]: "Oops!"
   };
   public currentLanguage: LanguageEnum = LanguageEnum.English;
   

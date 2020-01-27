@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class HttpServiceService {
@@ -39,14 +39,26 @@ export class HttpServiceService {
    * @param relativePath What path to add to http call.
    */
   public httpPost<T>(relativePath: string, body: any, options = null): Observable<any> {
-        return this.http.post<any>(this.apiUrl + relativePath, body).pipe(map(
-          success => {
-          return success
-          },
-          error => {
-            console.log(error)
-          }
-        ))
+        if (options && options.headers) {
+          const headers = new HttpHeaders(options.headers);
+          return this.http.post<any>(this.apiUrl + relativePath, body, {headers}).pipe(map(
+            success => {
+            return success
+            },
+            error => {
+              console.log(error)
+            }
+          ))
+        } else {
+          return this.http.post<any>(this.apiUrl + relativePath, body).pipe(map(
+            success => {
+            return success
+            },
+            error => {
+              console.log(error)
+            }
+          ))
+        }
   }
 
   /**

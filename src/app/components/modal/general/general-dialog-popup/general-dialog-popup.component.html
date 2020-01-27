@@ -1,0 +1,8 @@
+<div class="envelop" [ngClass]="{'hebrew': this.translateService.currentLanguage === this.languageEnum.English}">
+    <header>{{translateService.translate('oops')}}</header>
+    <main>{{translateService.translate('something went wrong')}}</main>
+    <p *ngIf="message">Details: {{message}}</p>
+    <footer>
+        <button (click)="close()">{{translateService.translate('got it')}}</button>
+    </footer>
+</div>

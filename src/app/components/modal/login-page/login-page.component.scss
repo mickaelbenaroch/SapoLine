@@ -1,0 +1,68 @@
+.envelop {
+    font-family: 'Amatic SC', cursive;
+    header {
+        display: flex;
+        button {
+            font-family: 'Amatic SC', cursive;
+            font-size: 25px;
+            color: black;
+            background: white;
+            border: none !important;
+            width: 100%;
+            cursor: pointer;
+        }
+    }
+    form {
+        margin: auto;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        .lign {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            span {
+                font-size: 22px;
+            }
+            small {
+                color: red;
+            }
+        }
+        .submit {
+            text-align: center;
+            padding: 1rem;
+            button {
+                background: black;
+                color: white;
+                font-weight: bold;
+                font-size: 22px;
+                cursor: pointer;
+                font-family: 'Amatic SC', cursive;
+                border: none;
+                padding: 5px;
+                border-radius: 5px;
+                width: 100%;
+            }
+        }
+        .forgot {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 10px;
+        }
+    }
+}
+
+.selected {
+    background: black !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.hebrew {
+    direction: rtl;
+    text-align: right;
+}
+
+.hide {
+    visibility: hidden;
+}

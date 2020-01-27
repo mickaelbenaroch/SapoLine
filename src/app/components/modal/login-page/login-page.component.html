@@ -1,0 +1,34 @@
+
+<div class="envelop" [ngClass]="{'hebrew': translateService.currentLanguage === languageEnum.English}">
+    <header>
+        <button [ngClass]="{'selected': !signUpMode}" (click)="toggleMode()">{{translateService.translate('signin')}}</button>
+        <button [ngClass]="{'selected': signUpMode}" (click)="toggleMode()">{{translateService.translate('signup')}}</button>
+    </header>
+    <form>
+        <div class="lign">
+            <span>{{translateService.translate('email')}}</span>
+            <input type="email" [(ngModel)]="loginModel.email" name="email" placeholder="youremail@youremail.com" (focus)="disableErrors('email')">
+            <small [ngClass]="{'hide': !emailError}">{{translateService.translate('mail error')}}</small>
+        </div>
+        <div class="lign">
+            <span>{{translateService.translate('password')}}</span>
+            <input type="password" [(ngModel)]="loginModel.password" name="password" placeholder="********" (focus)="disableErrors('password')">
+            <small [ngClass]="{'hide': !passwordError}">{{translateService.translate('password error')}}</small>
+        </div>
+        <div class="lign" [ngClass]="{'hide': !signUpMode}">
+            <span>{{translateService.translate('confirm password')}}</span>
+            <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="********" (focus)="disableErrors('confirmPassword')">
+            <small [ngClass]="{'hide': !passwordConfirmError}">{{translateService.translate('password not same')}}</small>
+        </div>
+        <div class="submit">
+            <button type="submit" (click)="submit()">{{translateService.translate('enter')}}</button>
+        </div>
+        <div class="forgot">
+            <span style="cursor: pointer;" (click)="forgotPassword()">{{translateService.translate('forgot password')}}</span>
+            <div class="text" [ngClass]="{'hide': signUpMode}">
+                <span>{{translateService.translate('not a member')}}</span>
+                <span style="color: black; font-weight: bold; cursor: pointer;" (click)="switchToRegister()">{{translateService.translate('join us')}}</span>
+            </div>
+        </div>
+    </form>
+</div>

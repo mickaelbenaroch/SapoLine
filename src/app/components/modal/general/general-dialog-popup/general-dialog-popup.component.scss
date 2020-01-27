@@ -1,0 +1,41 @@
+.envelop{
+    background: firebrick;
+    color: white;
+    padding: 10px;
+    height: 283px;
+    header {
+        font-family: 'Amatic SC', cursive;
+        font-size: 22px;
+        padding-right: 0.7rem;
+        font-size: 38px;
+    }
+    main, p {
+        font-family: 'Amatic SC', cursive;
+        padding: 0.7rem;
+        padding-right: 0.7rem;
+        margin-top: 0.7rem;
+        font-size: 20px;
+    }
+    p {
+        text-align: left !important;
+    }
+    footer {
+        font-family: 'Amatic SC', cursive;
+        text-align: center;
+        button {
+            font-size: 23px;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 0.5rem;
+            background: black;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+    }
+}
+
+.hebrew {
+    direction: rtl;
+    text-align: right;
+}

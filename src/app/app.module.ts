@@ -32,6 +32,8 @@ import { TranslateServiceService } from './services/translate/translate-service.
 import { CartComponent } from './components/cart/cart.component';
 import { PaymentMethodsComponent } from './components/modal/payment-methods/payment-methods.component';
 import { NotificationModalComponent } from './components/modal/notification/notification-modal/notification-modal.component';
+import { GeneralDialogPopupComponent } from './components/modal/general/general-dialog-popup/general-dialog-popup.component';
+import { LoginPageComponent } from './components/modal/login-page/login-page.component';
 
 const appRoutes: Routes = [
   { path: '' , component: MainPageComponent},
@@ -44,6 +46,7 @@ const appRoutes: Routes = [
   { path: 'itemDetail', component: ItemDetailComponent},
   { path: 'cart', component: CartComponent}
 ];
+
 
 @NgModule({
   declarations: [
@@ -65,7 +68,9 @@ const appRoutes: Routes = [
     BuyModalComponent,
     CartComponent,
     PaymentMethodsComponent,
-    NotificationModalComponent
+    NotificationModalComponent,
+    GeneralDialogPopupComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +83,7 @@ const appRoutes: Routes = [
     MatIconModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     HttpServiceService,
@@ -90,13 +95,15 @@ const appRoutes: Routes = [
       multi: true
     },
     ItemServiceService,
-    TranslateServiceService
+    TranslateServiceService,
   ],
   bootstrap: [AppComponent],
   entryComponents: [
     BuyModalComponent,
     PaymentMethodsComponent,
-    NotificationModalComponent
+    NotificationModalComponent,
+    LoginPageComponent,
+    GeneralDialogPopupComponent
   ]
 })
 export class AppModule { }

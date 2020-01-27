@@ -7,6 +7,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { LanguageEnum } from 'src/app/enums/language-enum';
 import { PaymentMethodsComponent } from '../modal/payment-methods/payment-methods.component';
+import { LoginPageComponent } from '../modal/login-page/login-page.component';
+import { AuthServiceService } from 'src/app/services/authentication/auth-service.service';
+import { AuthStatusEnum } from 'src/app/enums/auth-status-enum';
+import { BuyModalComponent } from '../modal/buy-modal/buy-modal/buy-modal.component';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +25,8 @@ export class CartComponent implements OnInit {
               public itemService: ItemServiceService,
               public langService: TranslateServiceService,
               public _DomSanitizationService: DomSanitizer,
-              public modalService: MatDialog) { }
+              public modalService: MatDialog,
+              public authService: AuthServiceService) { }
 
   ngOnInit() {
     if(this.itemService && this.itemService.cartOrderCounter) {
@@ -45,11 +50,47 @@ export class CartComponent implements OnInit {
   }
 
   openConfirmation(): void {
-      const dialogRef = this.modalService.open(PaymentMethodsComponent, {
+    let signUpMode: boolean = false;
+    let authStatus: AuthStatusEnum = this.authService.getAuthStatus();
+    switch (authStatus) {
+      case AuthStatusEnum.Authorized:
+      this.router.navigateByUrl('/cart');
+      const dialogRef0 = this.modalService.open(BuyModalComponent, {
         width: '550px',
-        height: '526px',
-        data: { total: this.total }
+        data: { }
       });
+      break;
+      case AuthStatusEnum.Unauthorized:
+      signUpMode = true;
+      const dialogRef = this.modalService.open(LoginPageComponent, {
+        width: '320px',
+        height: '440px',
+        data: { signUpMode: signUpMode }
+      }).afterClosed().subscribe(() => {
+        if (this.authService.getAuthStatus() === AuthStatusEnum.Authorized) {
+          const dialogRef = this.modalService.open(BuyModalComponent, {
+            width: '550px',
+            data: { }
+          });
+        }
+      });
+      break;
+      case AuthStatusEnum.NeedRefresh:
+      signUpMode = false;
+      const dialogRef2 = this.modalService.open(LoginPageComponent, {
+        width: '320px',
+        height: '440px',
+        data: { signUpMode: signUpMode }
+      }).afterClosed().subscribe(() => {
+        if (this.authService.getAuthStatus() === AuthStatusEnum.Authorized) {
+          const dialogRef2 = this.modalService.open(BuyModalComponent, {
+            width: '550px',
+            data: { }
+          });
+        }
+      });
+      break;
+    }
   }
 
   itemMenuClicked(ev: CategoryEnum): void {
