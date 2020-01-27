@@ -32,7 +32,7 @@
         <div class="field-group">
             <div>{{translateService.translate('address')}}</div>
             <input [(ngModel)]="address" name="street" (keydown)="disableError('address')"/>
-            <small [ngClass]="{'hide':streetError}">{{translateService.translate('address error')}}</small>
+            <small [ngClass]="{'hide':addressError}">{{translateService.translate('address error')}}</small>
         </div>
     </div>
     <div class="but-div">
