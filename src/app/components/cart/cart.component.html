@@ -18,7 +18,8 @@
     </section>
     <section class="total">
       <div>{{langService.translate('Total: ')}}</div>
-      <div>{{total}}</div>
+      <div *ngIf="langService.currentLanguage === languageEnum.Hebrew">{{total}} <span>NIS</span></div>
+      <div *ngIf="langService.currentLanguage === languageEnum.English">{{total}} <span>₪</span></div>
     </section>
     <section class="pay" (click)="toPayment()" [ngClass]="{'hebrew': this.langService.currentLanguage === this.languageEnum.English}">
       <img src="/assets/images/hand.svg"/>

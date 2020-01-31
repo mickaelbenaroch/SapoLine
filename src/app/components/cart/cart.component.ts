@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryEnum } from 'src/app/enums/categories-enum';
 import { Router } from '@angular/router';
-import { ItemServiceService } from 'src/app/services/item-service/item-service.service';
 import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { LanguageEnum } from 'src/app/enums/language-enum';
-import { PaymentMethodsComponent } from '../modal/payment-methods/payment-methods.component';
 import { LoginPageComponent } from '../modal/login-page/login-page.component';
 import { AuthServiceService } from 'src/app/services/authentication/auth-service.service';
 import { AuthStatusEnum } from 'src/app/enums/auth-status-enum';
-import { BuyModalComponent } from '../modal/buy-modal/buy-modal/buy-modal.component';
 import { OrderServiceService } from 'src/app/services/order/order-service.service';
+import { ModalModel } from 'src/app/models/ModalModel';
+import { NotificationModalComponent } from '../modal/notification/notification-modal/notification-modal.component';
+import { ModalTypeEnum } from 'src/app/enums/modal-type-enum';
 
 @Component({
   selector: 'app-cart',
@@ -56,7 +56,9 @@ export class CartComponent implements OnInit {
     switch (authStatus) {
       case AuthStatusEnum.Authorized:
       this.router.navigateByUrl('/cart');
-      this.authService.openBuyPopup();
+      if (this.orderService.cartOrderCounter && this.orderService.cartOrderCounter.length > 0) {
+        this.authService.openBuyPopup();
+      }
       break;
       case AuthStatusEnum.Unauthorized:
       signUpMode = true;
@@ -103,6 +105,24 @@ export class CartComponent implements OnInit {
   }
 
   toPayment(): void {
+      if (this.orderService.cartOrderCounter.length === 0) {
+        let modalModel = new ModalModel();
+        modalModel.type = ModalTypeEnum.warning;
+        modalModel.body = this.langService.translate('Cart is empty!');
+        modalModel.displayBody = true;
+        this.showNotification(modalModel);
+        return;
+      }
       this.openConfirmation();
+  }
+
+  showNotification(modalModel: ModalModel): void {
+    const dialogRef = this.modalService.open(NotificationModalComponent, {
+      width: '500px',
+      height: '45px',
+      panelClass: 'noti-modalbox',
+      position: { top: '0px' },
+      data: {modalModel: modalModel}
+    });
   }
 }

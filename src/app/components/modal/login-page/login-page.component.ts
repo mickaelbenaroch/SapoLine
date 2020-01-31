@@ -20,6 +20,7 @@ export class LoginPageComponent implements OnInit {
   public passwordError: boolean;
   public passwordConfirmError: boolean;
   public emailError: boolean;
+  public noRedirect: boolean;
 
   constructor(public translateService: TranslateServiceService, 
               public authService: AuthServiceService,
@@ -27,6 +28,7 @@ export class LoginPageComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: LoginPageComponent,
               private router: Router) {
                 this.signUpMode = this.data.signUpMode;
+                this.noRedirect = this.data.noRedirect;
               }
 
   ngOnInit() {}
@@ -88,7 +90,9 @@ export class LoginPageComponent implements OnInit {
   }
   completeSignUp(): void {
     if (this.loginModel && this.loginModel.password && this.loginModel.email) {
-      this.authService.signUp(this.loginModel);
+      if (this.noRedirect) {
+        this.authService.signUp(this.loginModel);
+      }
       this.close();
     }
   }

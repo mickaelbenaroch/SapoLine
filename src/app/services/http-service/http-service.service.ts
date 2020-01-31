@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -13,8 +13,8 @@ export class HttpServiceService {
   //#region Lifecycle Hooks
   public constructor(
     protected http: HttpClient,) {
-      this.apiUrl = "https://sapoappapi.herokuapp.com/";
-      //this.apiUrl = "http://localhost:3030/";
+      //this.apiUrl = "https://sapoappapi.herokuapp.com/";
+      this.apiUrl = "http://localhost:8000/";
   }
   //#endregion
 
@@ -23,13 +23,14 @@ export class HttpServiceService {
    * HTTP Get function.
    * @param relativePath What path to add to http call.
    */
-  public httpGet<T>(relativePath: string, options = null): Observable<any> {    
-    return this.http.get(relativePath).pipe(map(
+  public httpGet<T>(relativePath: string, options = null): Observable<T> {    
+    return this.http.get<T>(relativePath).pipe(map(
       success => {
       return success;
       },
       error => {
         console.log(error);
+        return of(null);
       }
     ));
   }
@@ -38,25 +39,27 @@ export class HttpServiceService {
    * HTTP Post function.
    * @param relativePath What path to add to http call.
    */
-  public httpPost<T>(relativePath: string, body: any, options?): Observable<any> {
+  public httpPost<T>(relativePath: string, body: any, options?): Observable<T> {
         if (options) {
           let token = sessionStorage.getItem('token');
           const headers = new HttpHeaders({'token': token});
-          return this.http.post<any>(this.apiUrl + relativePath, body, {headers: headers}).pipe(map(
+          return this.http.post<T>(this.apiUrl + relativePath, body, {headers: headers}).pipe(map(
             success => {
             return success
             },
             error => {
               console.log(error)
+              return of(null);
             }
           ))
         } else {
-          return this.http.post<any>(this.apiUrl + relativePath, body).pipe(map(
+          return this.http.post<T>(this.apiUrl + relativePath, body).pipe(map(
             success => {
             return success
             },
             error => {
-              console.log(error)
+              console.log(error);
+              return of(null);
             }
           ))
         }
@@ -66,13 +69,14 @@ export class HttpServiceService {
    * HTTP Put function.
    * @param relativePath What path to add to http call.
    */
-  public httpPut<T>(relativePath: string, body: any, options = null): Observable<any> {
-    return this.http.put(this.apiUrl + relativePath, body).pipe(map(
+  public httpPut<T>(relativePath: string, body: any, options = null): Observable<T> {
+    return this.http.put<T>(this.apiUrl + relativePath, body).pipe(map(
       success => {
           return success;
       },
       error =>{
         console.log(error);
+        return of(null);
       }
     ));
   }

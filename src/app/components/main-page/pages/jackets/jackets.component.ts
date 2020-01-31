@@ -22,7 +22,7 @@ export class JacketsComponent implements OnInit {
     let obj = {
       category_id: '10005'
     }
-    this.httpService.httpPost("item/getItems",obj).subscribe(res => {
+    this.httpService.httpPost("item/getItems",obj).subscribe((res: any) => {
       this.items = res.item;
       this.items.forEach(item => {
         if (this.langService.currentLanguage === this.languageEnum.English) {

@@ -6,6 +6,9 @@ import { GeneralDialogPopupComponent } from 'src/app/components/modal/general/ge
 import { Router } from '@angular/router';
 import { AuthStatusEnum } from 'src/app/enums/auth-status-enum';
 import { BuyModalComponent } from 'src/app/components/modal/buy-modal/buy-modal/buy-modal.component';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +17,6 @@ export class AuthServiceService implements OnInit {
   private token: string;
   private exp: number;
   public loginModel: LoginModel;
-  private timeStamp: number;
   public authStatus: AuthStatusEnum;
   constructor(private httpService: HttpServiceService,
               private modalService: MatDialog,
@@ -24,15 +26,16 @@ export class AuthServiceService implements OnInit {
 
   }
 
-  signin(user: LoginModel): void {
+  signin(user: LoginModel, noRedirect?): void {
     if (user && user.email && user.password) {
-      this.httpService.httpPost('login/signin', user).subscribe(res => {
+      this.httpService.httpPost('login/signin', user).subscribe((res: any) => {
         if (res && res.isValid && res.data && res.data.token) {
-          this.timeStamp = new Date().getTime();
           this.token = res.data.token;
           this.exp = res.data.maxAge;
           this.saveAuthDetails();
-          this.openBuyPopup();
+          if (!noRedirect) {
+            this.openBuyPopup();
+          }
         } else {
           this.openErrorModal();
         }
@@ -42,15 +45,16 @@ export class AuthServiceService implements OnInit {
     } 
   } 
 
-  signUp(user: LoginModel): void {
+  signUp(user: LoginModel, noRedirect?): void {
     if (user && user.email && user.password) {
-      this.httpService.httpPost('login/newuser', user).subscribe(res => {
+      this.httpService.httpPost('login/newuser', user).subscribe((res: any) => {
         if (res && res.isValid && res.user && res.user.token) {
-          this.timeStamp = new Date().getTime();
           this.token = res.user.token;
           this.exp = res.user.maxAge;
           this.saveAuthDetails();
-          this.openBuyPopup();
+          if (!noRedirect) {
+            this.openBuyPopup();
+          }
         } else {
           if (res && !res.isValid) {
             this.openErrorModal(res.error);
@@ -105,6 +109,22 @@ export class AuthServiceService implements OnInit {
     const dialogRef = this.modalService.open(BuyModalComponent, {
       width: '550px',
       data: { }
-    });
+    });""
+  }
+
+  public isUserAlive(token: string): Observable<boolean> {
+    if(token) {
+      return this.httpService.httpPost('login/checktoken', {check: "check"}, true).pipe(map(
+        (res: any) => {
+          if (res && res.isValid && res.token && res.token.isAlive) {
+            return true;
+          } else {
+            return false;
+          }
+        }, err => {
+          return false;
+        }
+      ))}
+    return of(false);
   }
 }
