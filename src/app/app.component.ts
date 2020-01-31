@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
         if (token && res) {
           this.authService.setToken(token);
         } else {
-          this.openLoginPopup(true);
+          //this.openLoginPopup(true);
         }
       }, err => {
         this.openLoginPopup(true);
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     openLoginPopup(noRedirect: boolean): void {
       const dialogRef = this.modalService.open(LoginPageComponent, {
         width: '320px',
-        height: '440px',
+        height: '450px',
         data: { signUpMode: false, noRedirect: noRedirect}
       });
     }
