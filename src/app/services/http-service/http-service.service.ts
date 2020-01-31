@@ -13,8 +13,8 @@ export class HttpServiceService {
   //#region Lifecycle Hooks
   public constructor(
     protected http: HttpClient,) {
-      //this.apiUrl = "https://sapoappapi.herokuapp.com/";
-      this.apiUrl = "http://localhost:8000/";
+      this.apiUrl = "https://sapoappapi.herokuapp.com/";
+      //this.apiUrl = "http://localhost:8000/";
   }
   //#endregion
 
