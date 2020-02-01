@@ -90,7 +90,7 @@ export class LoginPageComponent implements OnInit {
   }
   completeSignUp(): void {
     if (this.loginModel && this.loginModel.password && this.loginModel.email) {
-      if (this.noRedirect) {
+      if (!this.noRedirect) {
         this.authService.signUp(this.loginModel);
       }
       this.close();
