@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { OrderModel } from 'src/app/models/OrderModel';
 import { HttpServiceService } from '../http-service/http-service.service';
 import { HttpHeaders } from '@angular/common/http';
@@ -14,14 +14,39 @@ import { GeneralDialogPopupComponent } from 'src/app/components/modal/general/ge
 @Injectable({
   providedIn: 'root'
 })
-export class OrderServiceService {
+export class OrderServiceService implements OnInit{
 
   public currentViewedItem: ItemModel;
+  public total: number = 0;
   public cartOrderCounter: ItemModel[] = [];
   constructor(public httpService: HttpServiceService,
               public modalService: MatDialog,
               public langService: TranslateServiceService) { }
 
+  ngOnInit(): void {
+    if(this.cartOrderCounter) {
+      this.total = 0;
+      this.cartOrderCounter.forEach(item => {
+        let temp = [];
+        let fixed = '';
+        if (item.price.includes(',')) {
+          temp = item.price.split(',');
+          if (temp.length >= 2) {
+            if (temp[1].includes('₪')) {
+               temp[1] = temp[1].substring(0, temp[1].length - 1);
+            } else {
+              temp[1] = temp[1].substring(0, temp[1].length - 3);
+            }
+            fixed = temp[0] + '.' + temp[1];
+          }
+        }
+        this.total += (Number(fixed) * Number(item.quantity))
+      });
+    }
+  }
+  updateTotalCost(): void {
+    this.ngOnInit();
+  }
   order(order: OrderModel): void {
     this.httpService.httpPost('order', order, true).subscribe(
       (res: any) => {
@@ -33,6 +58,7 @@ export class OrderServiceService {
            modalModel.type = ModalTypeEnum.success;
            this.modalService.closeAll();
            this.cartOrderCounter = [];
+           this.total = 0;
            this.showNotification(modalModel);
         }
       },

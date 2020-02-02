@@ -5,21 +5,29 @@
   </header>
   <div class="div-1" [ngClass]="{'hebrew': this.langService.currentLanguage === this.languageEnum.English}" *ngIf="orderService && orderService.cartOrderCounter">
     <section class="empty" *ngIf="orderService.cartOrderCounter.length === 0">{{langService.translate('Cart is empty!')}}</section>
+    <section class="item" style="padding-top: 1rem;" *ngIf="orderService.cartOrderCounter.length > 0">
+      <div><span>{{langService.translate('item')}}</span></div>
+      <div class="img-div" style="padding: 0">
+        <span>{{langService.translate('image')}}</span>
+      </div>
+      <div><span>{{langService.translate('quantity')}}</span></div>
+      <div><span>{{langService.translate('size')}}</span></div>
+       <div><span>{{langService.translate('price2')}}</span></div>
+    </section>
     <section class="item" *ngFor="let item of orderService.cartOrderCounter">
-      <div>{{item.name}}</div>
+      <div><span>{{item.name}}</span></div>
       <div class="img-div" style="padding: 0">
         <img class="img" [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.mainPicture)"/>
       </div>
-      <div>X</div>
-      <div>{{item.quantity}}</div>
-      <div>{{item.choosedSize}}</div>
-      <div>=</div>
-       <div>{{item.price}}</div>
+      <div><span>{{item.quantity}}</span></div>
+      <div><span>{{item.choosedSize}}</span></div>
+      <div *ngIf="langService.currentLanguage === languageEnum.Hebrew"><span>{{ parsePrice(item.price) * item.quantity}}</span><span>NIS</span></div>
+      <div *ngIf="langService.currentLanguage === languageEnum.English"><span>{{ parsePrice(item.price) * item.quantity}}</span><span>₪</span></div>
     </section>
     <section class="total">
       <div>{{langService.translate('Total: ')}}</div>
-      <div *ngIf="langService.currentLanguage === languageEnum.Hebrew">{{total}} <span>NIS</span></div>
-      <div *ngIf="langService.currentLanguage === languageEnum.English">{{total}} <span>₪</span></div>
+      <div *ngIf="langService.currentLanguage === languageEnum.Hebrew">{{orderService.total}} <span>NIS</span></div>
+      <div >{{orderService.total}} <span>₪</span></div>
     </section>
     <section class="pay" (click)="toPayment()" [ngClass]="{'hebrew': this.langService.currentLanguage === this.languageEnum.English}">
       <img src="/assets/images/hand.svg"/>

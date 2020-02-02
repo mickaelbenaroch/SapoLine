@@ -20,7 +20,6 @@ import { ModalTypeEnum } from 'src/app/enums/modal-type-enum';
 })
 export class CartComponent implements OnInit {
 
-  public total: number = 0;
   public languageEnum = LanguageEnum;
   constructor(public router: Router,
               public orderService: OrderServiceService,
@@ -30,26 +29,18 @@ export class CartComponent implements OnInit {
               public authService: AuthServiceService) { }
 
   ngOnInit() {
-    if(this.orderService && this.orderService.cartOrderCounter) {
-      this.orderService.cartOrderCounter.forEach(item => {
-        let temp = [];
-        let fixed = '';
-        if (item.price.includes(',')) {
-          temp = item.price.split(',');
-          if (temp.length >= 2) {
-            if (temp[1].includes('₪')) {
-               temp[1] = temp[1].substring(0, temp[1].length - 1);
-            } else {
-              temp[1] = temp[1].substring(0, temp[1].length - 3);
-            }
-            fixed = temp[0] + '.' + temp[1];
-          }
-        }
-        this.total += (Number(fixed) * Number(item.quantity))
-      });
-    }
+    this.orderService.updateTotalCost();
   }
 
+  parsePrice(price: string): number {
+    if (price.includes('₪')) {
+      price = price.substring(0, price.length - 1);
+   } else {
+    price = price.substring(0, price.length - 3);
+   }
+   price = price.replace(',', '.');
+    return Number(price);
+  }
   openConfirmation(): void {
     let signUpMode: boolean = false;
     let authStatus: AuthStatusEnum = this.authService.getAuthStatus();

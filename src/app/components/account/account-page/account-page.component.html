@@ -5,5 +5,21 @@
       <div class="title">
         <h1>{{langService.translate('Account')}}</h1>
       </div>
+      <div class="table" [ngClass]="{'hebrew': this.langService.currentLanguage === this.languageEnum.English}">
+        <section *ngIf="userModel">
+          <div>{{langService.translate('first name')}}</div>
+          <div>{{langService.translate('last name')}}</div>
+          <div>{{langService.translate('email')}}</div>
+          <div>{{langService.translate('phone number')}}</div>
+          <div>{{langService.translate('address')}}</div>
+        </section>
+        <section *ngIf="userModel">
+          <div>{{userModel.first_name}}</div>
+          <div>{{userModel.last_name}}</div>
+          <div>{{userModel.email}}</div>
+          <div>{{userModel.phone}}</div>
+          <div>{{userModel.address}}</div>
+        </section>
+      </div>
     </div>
   </div>

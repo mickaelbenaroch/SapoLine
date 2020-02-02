@@ -81,6 +81,12 @@ export class TranslateServiceService {
     ["Order number: "]: "הזמנה מספר: ",
     ["Was created Successfully!"]: " נוצרה בהצלחה! ",
     ["Account"]: "החשבון שלי",
+    ["item"]:"פריט: ",
+    ["image"]: "תמונה: ",
+    ["quantity"]: "כמות: ",
+    ["size"]: "מידה: ",
+    ["total"]: "סה״כ: ",
+    ["price2"]: "מחיר: ",
   };
   englishDico: Dictionary<string> = {
     ["price"]: 'price',
@@ -158,6 +164,12 @@ export class TranslateServiceService {
     ["Order number: "]: "Order number :",
     ["Was created Successfully!"]: "Was created Successfully!",
     ["Account"]: "My Account",
+    ["item"]:"Item:",
+    ["image"]: "Image:",
+    ["quantity"]: "Quantity:",
+    ["size"]: "Size:",
+    ["total"]: "Total:",
+    ["price2"]: "Price:",
   };
   public currentLanguage: LanguageEnum = LanguageEnum.English;
   

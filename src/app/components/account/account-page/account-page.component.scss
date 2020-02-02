@@ -1,10 +1,19 @@
 .envelop {
     background-color: darkgrey;
     min-height: 100%;
+    padding: 2rem;
     .div-1 {
         padding-top: 100px;
         .title {
             text-align: center;
+        }
+        .table {
+            display: flex;
+            section {
+                div {
+                    padding: 1rem;
+                }
+            }
         }
     }
     app-menu {
@@ -13,7 +22,7 @@
         z-index: 99999999999999;
         justify-content: flex-end;
     }
-}
+} 
 
 @media only screen and (max-width: 600px) {
     app-menu {
@@ -24,4 +33,8 @@
     .envelop {
         height: unset !important;
     }
+}
+.hebrew {
+    direction: rtl;
+    text-align: right;
 }
