@@ -1,38 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryEnum } from 'src/app/enums/categories-enum';
-import { Router } from '@angular/router';
 import { ItemModel } from 'src/app/models/ItemModel';
+import { LanguageEnum } from 'src/app/enums/language-enum';
+import { Router } from '@angular/router';
 import { HttpServiceService } from 'src/app/services/http-service/http-service.service';
 import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
-import { LanguageEnum } from 'src/app/enums/language-enum';
+import { CategoryEnum } from 'src/app/enums/categories-enum';
 
 @Component({
-  selector: 'app-dresses',
-  templateUrl: './dresses.component.html',
-  styleUrls: ['./dresses.component.scss']
+  selector: 'app-account-page',
+  templateUrl: './account-page.component.html',
+  styleUrls: ['./account-page.component.scss']
 })
-export class DressesComponent implements OnInit {
+export class AccountPageComponent implements OnInit {
 
-  public items: ItemModel[] = [];
   public languageEnum = LanguageEnum;
   constructor(public router: Router, 
              public httpService: HttpServiceService,
              public langService: TranslateServiceService) { }
 
   ngOnInit() {
-    let obj = {
-      category_id: '10002'
-    }
-    this.httpService.httpPost("item/getItems",obj).subscribe((res: any) => {
-      this.items = res.item;
-      this.items.forEach(item => {
-        if (this.langService.currentLanguage === this.languageEnum.English) {
-          item.price += '₪';
-        } else {
-          item.price += 'NIS'
-        }
-      });
-    })
   }
 
   itemMenuClicked(ev: string): void {
@@ -63,7 +49,4 @@ export class DressesComponent implements OnInit {
     }
   }
 
-  buyEvent(item: ItemModel): void {
-    console.log(item);
-  }
 }

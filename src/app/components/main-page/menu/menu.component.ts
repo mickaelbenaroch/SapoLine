@@ -46,8 +46,11 @@ export class MenuComponent implements OnInit {
           this.menuClickEvent.emit(CategoryEnum.Accessories);    
         break;
         case CategoryEnum.Dresses:
-            this.menuClickEvent.emit(CategoryEnum.Dresses);    
-          break;
+          this.menuClickEvent.emit(CategoryEnum.Dresses);    
+        break;
+        case CategoryEnum.Account:
+          this.menuClickEvent.emit(CategoryEnum.Account);    
+        break;
       }
     }
   }

@@ -34,6 +34,7 @@ import { PaymentMethodsComponent } from './components/modal/payment-methods/paym
 import { NotificationModalComponent } from './components/modal/notification/notification-modal/notification-modal.component';
 import { GeneralDialogPopupComponent } from './components/modal/general/general-dialog-popup/general-dialog-popup.component';
 import { LoginPageComponent } from './components/modal/login-page/login-page.component';
+import { AccountPageComponent } from './components/account/account-page/account-page.component';
 
 const appRoutes: Routes = [
   { path: '' , component: MainPageComponent},
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
   { path: 'dresses', component: DressesComponent},
   { path: 'jackets', component: JacketsComponent},
   { path: 'itemDetail', component: ItemDetailComponent},
-  { path: 'cart', component: CartComponent}
+  { path: 'cart', component: CartComponent},
+  { path: 'account', component: AccountPageComponent},
 ];
 
 
@@ -70,7 +72,8 @@ const appRoutes: Routes = [
     PaymentMethodsComponent,
     NotificationModalComponent,
     GeneralDialogPopupComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    AccountPageComponent
   ],
   imports: [
     BrowserModule,

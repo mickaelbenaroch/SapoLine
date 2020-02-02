@@ -4,9 +4,14 @@
     <img *ngIf="langService.currentLanguage === localLanguageEnum.English" src="assets/images/usa.svg" (click)="changeLanguageTo('usa')"/>
   </div>
   <div class="circle">
+    <span (click)="enterItem('Account')">{{langService.translate('Account')}}</span>
+    <img class="account-img" src="/assets/images/account.svg" (click)="enterItem('Account')"/>
+  </div>
+  <div class="circle">
     <span (click)="enterItem('Shirts&Tops')">{{langService.translate('Shirts & Tops')}}</span>
   </div>
   <div class="circle">
+      <img>
       <span (click)="enterItem('Pants&Bottoms')">{{langService.translate('Pants & Bottoms')}}</span>
   </div>
   <div class="circle">
@@ -56,6 +61,10 @@
   <button mat-menu-item (click)="enterItem('Accessories')">
     <mat-icon><img src="/assets/images/accessories.svg"/></mat-icon>
     <span>{{langService.translate('Accessories')}}</span>
+  </button>
+  <button mat-menu-item (click)="enterItem('Account')">
+    <mat-icon><img src="/assets/images/account.svg"/></mat-icon>
+    <span>{{langService.translate('Account')}}</span>
   </button>
   <div class="mob-lang">
     <img src="/assets/images/cart.svg" (click)="openCart()"/>

@@ -8,7 +8,7 @@
     width: 70%;
     .circle {
         height: 87px;
-        width: 87px;
+        width: 97px;
         //background-color: darkgrey;
         border-radius: 50%;
         text-align: center;
@@ -21,6 +21,12 @@
             color: white;
             font-weight: bold;
             font-family: 'Amatic SC', cursive;
+        }
+        .account-img {
+            width: 21px;
+            margin-right: 5px;
+            cursor: pointer;
+            margin-left: 5px;
         }
     }
 }

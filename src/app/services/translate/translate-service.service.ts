@@ -80,6 +80,7 @@ export class TranslateServiceService {
     ['address error']: "כתובת חסרה!",
     ["Order number: "]: "הזמנה מספר: ",
     ["Was created Successfully!"]: " נוצרה בהצלחה! ",
+    ["Account"]: "החשבון שלי",
   };
   englishDico: Dictionary<string> = {
     ["price"]: 'price',
@@ -155,7 +156,8 @@ export class TranslateServiceService {
     ['address']: "Full Address: ",
     ['address error']: "Address is empty!",
     ["Order number: "]: "Order number :",
-    ["Was created Successfully!"]: "Was created Successfully!"
+    ["Was created Successfully!"]: "Was created Successfully!",
+    ["Account"]: "My Account",
   };
   public currentLanguage: LanguageEnum = LanguageEnum.English;
   

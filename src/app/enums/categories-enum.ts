@@ -4,5 +4,6 @@ export enum CategoryEnum {
     CoatsAndJackets = 'Coats&Jackets',
     Dresses = 'Dresses',
     ShoesAndBags = 'Shoes&Bags',
-    Accessories = 'Accessories'
+    Accessories = 'Accessories',
+    Account = 'Account'
 }

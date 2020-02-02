@@ -64,7 +64,7 @@ export class CartComponent implements OnInit {
       signUpMode = true;
       const dialogRef = this.modalService.open(LoginPageComponent, {
         width: '320px',
-        height: '440px',
+        minHeight: '440px',
         data: { signUpMode: signUpMode }
       });
       break;
@@ -72,7 +72,7 @@ export class CartComponent implements OnInit {
       signUpMode = false;
       const dialogRef2 = this.modalService.open(LoginPageComponent, {
         width: '320px',
-        height: '440px',
+        minHeight: '440px',
         data: { signUpMode: signUpMode }
       });
       break;
