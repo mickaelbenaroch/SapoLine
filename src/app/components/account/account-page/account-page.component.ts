@@ -5,6 +5,10 @@ import { Router } from '@angular/router';
 import { HttpServiceService } from 'src/app/services/http-service/http-service.service';
 import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
 import { CategoryEnum } from 'src/app/enums/categories-enum';
+import { UserModel } from 'src/app/models/UserModel';
+import { AuthServiceService } from 'src/app/services/authentication/auth-service.service';
+import { GeneralDialogPopupComponent } from '../../modal/general/general-dialog-popup/general-dialog-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-account-page',
@@ -14,11 +18,25 @@ import { CategoryEnum } from 'src/app/enums/categories-enum';
 export class AccountPageComponent implements OnInit {
 
   public languageEnum = LanguageEnum;
+  public userModel: UserModel;
   constructor(public router: Router, 
              public httpService: HttpServiceService,
-             public langService: TranslateServiceService) { }
+             public langService: TranslateServiceService,
+             public authService: AuthServiceService,
+             private modalService: MatDialog) { }
 
   ngOnInit() {
+    let temp = this.authService.getUserEmail();
+    this.httpService.httpPost('user/getuser', {email: temp}, true).subscribe(
+      (res: any) => {
+        if (res && res.data) {
+          this.userModel = res.data;
+        }
+      },
+      err => {
+        this.openErrorModal();
+      }
+    )
   }
 
   itemMenuClicked(ev: string): void {
@@ -49,4 +67,12 @@ export class AccountPageComponent implements OnInit {
     }
   }
 
+  openErrorModal(message?: string): void {
+    const dialogRef = this.modalService.open(GeneralDialogPopupComponent, {
+      width: '360px',   
+      height: '303px',
+      panelClass: 'generic-error-class',
+      data: {message: message }
+    });
+  }
 }

@@ -8,6 +8,7 @@ import { AuthStatusEnum } from 'src/app/enums/auth-status-enum';
 import { BuyModalComponent } from 'src/app/components/modal/buy-modal/buy-modal/buy-modal.component';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { UserModel } from 'src/app/models/UserModel';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ import { map } from 'rxjs/operators';
 export class AuthServiceService implements OnInit {
   private token: string;
   private exp: number;
-  public loginModel: LoginModel;
+  public loginModel: LoginModel = new LoginModel();
   public authStatus: AuthStatusEnum;
   constructor(private httpService: HttpServiceService,
               private modalService: MatDialog,
@@ -32,7 +33,7 @@ export class AuthServiceService implements OnInit {
         if (res && res.isValid && res.data && res.data.token) {
           this.token = res.data.token;
           this.exp = res.data.maxAge;
-          this.saveAuthDetails();
+          this.saveAuthDetails(user);
           if (!noRedirect) {
             this.openBuyPopup();
           }
@@ -47,11 +48,12 @@ export class AuthServiceService implements OnInit {
 
   signUp(user: LoginModel, noRedirect?): void {
     if (user && user.email && user.password) {
+      this.loginModel.email = user.email;
       this.httpService.httpPost('login/newuser', user).subscribe((res: any) => {
         if (res && res.isValid && res.user && res.user.token) {
           this.token = res.user.token;
           this.exp = res.user.maxAge;
-          this.saveAuthDetails();
+          this.saveAuthDetails(user);
           if (!noRedirect) {
             this.openBuyPopup();
           }
@@ -99,9 +101,16 @@ export class AuthServiceService implements OnInit {
     } 
   }
 
-  saveAuthDetails(): void {
+  saveAuthDetails(user): void {
     if (this.token && this.exp) {
       sessionStorage.setItem('token',this.token);
+      sessionStorage.setItem('email', user.email);
+    }
+  }
+
+  getUserEmail(): string {
+    if (sessionStorage.getItem('email')) {
+      return sessionStorage.getItem('email');
     }
   }
 

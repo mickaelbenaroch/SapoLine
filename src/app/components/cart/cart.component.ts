@@ -100,6 +100,9 @@ export class CartComponent implements OnInit {
           case CategoryEnum.Dresses:
             this.router.navigateByUrl('dresses');
             break;
+          case CategoryEnum.Account:
+              this.router.navigateByUrl('account');    
+            break;
       }
     }
   }
