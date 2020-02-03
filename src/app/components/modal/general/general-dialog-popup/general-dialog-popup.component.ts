@@ -12,10 +12,12 @@ export class GeneralDialogPopupComponent implements OnInit {
 
   public message: string;
   public languageEnum = LanguageEnum;
+  public twoButtons: boolean;
   constructor(public translateService: TranslateServiceService,
               public dialogRef: MatDialogRef<GeneralDialogPopupComponent>,
               @Inject(MAT_DIALOG_DATA) public data: GeneralDialogPopupComponent) {
                 this.message = this.data.message;
+                this.twoButtons = this.data.twoButtons;
                }
 
   ngOnInit() {

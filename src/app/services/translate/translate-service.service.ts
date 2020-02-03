@@ -87,6 +87,11 @@ export class TranslateServiceService {
     ["size"]: "מידה: ",
     ["total"]: "סה״כ: ",
     ["price2"]: "מחיר: ",
+    ["delete"]: "הסר",
+    ["delete confirmation"]: "הסרת פריט מהעגלה",
+    ["are you sure to delete"]: "האם הנך בטוח שברצונך למחוק מהעגלה את ",
+    ["item has been removed"]: "הפריט הוסר מהעגלה!",
+    ["cancel"]: "ביטול",
   };
   englishDico: Dictionary<string> = {
     ["price"]: 'price',
@@ -170,6 +175,11 @@ export class TranslateServiceService {
     ["size"]: "Size:",
     ["total"]: "Total:",
     ["price2"]: "Price:",
+    ["delete"]: "Remove",
+    ["delete confirmation"]: "Remove item from cart",
+    ["are you sure to delete"]: "Are you sure to remove from cart ",
+    ["item has been removed"]: "The item has been removed from cart!",
+    ["cancel"]: "Cancel",
   };
   public currentLanguage: LanguageEnum = LanguageEnum.English;
   

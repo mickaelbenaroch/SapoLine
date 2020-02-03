@@ -12,7 +12,8 @@
       </div>
       <div><span>{{langService.translate('quantity')}}</span></div>
       <div><span>{{langService.translate('size')}}</span></div>
-       <div><span>{{langService.translate('price2')}}</span></div>
+      <div><span>{{langService.translate('price2')}}</span></div>
+      <div><span>{{langService.translate('nothing')}}</span></div>
     </section>
     <section class="item" *ngFor="let item of orderService.cartOrderCounter">
       <div><span>{{item.name}}</span></div>
@@ -23,6 +24,7 @@
       <div><span>{{item.choosedSize}}</span></div>
       <div *ngIf="langService.currentLanguage === languageEnum.Hebrew"><span>{{ parsePrice(item.price) * item.quantity}}</span><span>NIS</span></div>
       <div *ngIf="langService.currentLanguage === languageEnum.English"><span>{{ parsePrice(item.price) * item.quantity}}</span><span>₪</span></div>
+      <div><img class="delete" src="/assets/images/trash.svg" (click)="removeItem(item)"/><span (click)="removeItem(item)" style="cursor: pointer;">{{langService.translate('delete')}}</span></div>
     </section>
     <section class="total">
       <div>{{langService.translate('Total: ')}}</div>

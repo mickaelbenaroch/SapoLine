@@ -26,7 +26,6 @@ export class NotificationModalComponent implements OnInit {
     }
 
   ngOnInit() {
-  let temp = this.modalModel;
     setTimeout(() => {
       this.close();
     }, 5000);

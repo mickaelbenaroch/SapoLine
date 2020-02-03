@@ -12,6 +12,8 @@ import { OrderServiceService } from 'src/app/services/order/order-service.servic
 import { ModalModel } from 'src/app/models/ModalModel';
 import { NotificationModalComponent } from '../modal/notification/notification-modal/notification-modal.component';
 import { ModalTypeEnum } from 'src/app/enums/modal-type-enum';
+import { ItemModel } from 'src/app/models/ItemModel';
+import { GeneralDialogPopupComponent } from '../modal/general/general-dialog-popup/general-dialog-popup.component';
 
 @Component({
   selector: 'app-cart',
@@ -118,5 +120,21 @@ export class CartComponent implements OnInit {
       position: { top: '0px' },
       data: {modalModel: modalModel}
     });
+  }
+  removeItem(item: ItemModel): void {
+    let message = item.name;
+    this.openDeleteConfirmationModal(message, item);
+  }
+  openDeleteConfirmationModal(message: string, item: ItemModel): void {
+    const dialogRef = this.modalService.open(GeneralDialogPopupComponent, {
+      width: '360px',   
+      height: '303px',
+      panelClass: 'generic-error-class',
+      data: {message: message, twoButtons: true }
+    }).afterClosed().subscribe(del => {
+      if (del) {
+        this.orderService.removeItemFromCart(item);
+      }
+    })
   }
 }

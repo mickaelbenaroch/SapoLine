@@ -1,8 +1,18 @@
-<div class="envelop" [ngClass]="{'hebrew': this.translateService.currentLanguage === this.languageEnum.English}">
+<div class="envelop" *ngIf="!twoButtons" [ngClass]="{'hebrew': this.translateService.currentLanguage === this.languageEnum.English}">
     <header>{{translateService.translate('oops')}}</header>
     <main>{{translateService.translate('something went wrong')}}</main>
     <p *ngIf="message">Details: {{message}}</p>
     <footer>
         <button (click)="close()">{{translateService.translate('got it')}}</button>
+    </footer>
+</div>
+
+<div class="envelop" *ngIf="twoButtons" [ngClass]="{'hebrew': this.translateService.currentLanguage === this.languageEnum.English}">
+    <header>{{translateService.translate('delete confirmation')}}</header>
+    <main>{{translateService.translate('are you sure to delete')}}</main>
+    <p *ngIf="message">Details: {{message}}</p>
+    <footer>
+        <button style="margin-left: 5px; margin-right: 5px;" (click)="close(true)">{{translateService.translate('delete')}}</button>
+        <button style="margin-left: 5px; margin-right: 5px;" (click)="close(false)">{{translateService.translate('cancel')}}</button>
     </footer>
 </div>
