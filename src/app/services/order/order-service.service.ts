@@ -39,7 +39,7 @@ export class OrderServiceService implements OnInit {
             fixed = temp[0] + '.' + temp[1];
           }
         }
-        this.total += (Number(fixed) * Number(item.quantity))
+        this.total += (Number(fixed) * Number(item.quantity));
       });
     }
   }
@@ -47,6 +47,9 @@ export class OrderServiceService implements OnInit {
     this.ngOnInit();
   }
   order(order: OrderModel): void {
+    if (this.total) {
+      order.total = this.total;
+    }
     this.httpService.httpPost('order', order, true).subscribe(
       (res: any) => {
         if (res && res.isValid && res.order) {

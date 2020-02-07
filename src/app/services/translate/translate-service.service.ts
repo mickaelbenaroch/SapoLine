@@ -21,7 +21,7 @@ export class TranslateServiceService {
     ["Total: "]: 'סה״כ :',
     ["To Payment :"]: 'לתשלום :',
     ["Need help? Ask us"]: 'צריך עזרה? פנה אלינו',
-    ["Payment text"]: "אצלנו התשלום לא נעשה באשראי דרך האתר,אלא הרבה יותר קל! מספיק לבחור אחד האפשרויות הבאות. לפי מה שנוח לכם תוכלו לשלם דרך אחת מפלטפורמוט התשלום או לחילופין לשלם במזומן לשליח בעת הגעת המוצר.",
+    ["Payment text"]: "ההזמנה תאושר סופית לאחר התשלום באמתעות אחת הפלטפורמות הבאות למספר המופיע מטה. תוכל לעקוב אחרי סטטוס ההזמה. לכל שאלה פנה אלינו בווטסאפ בקישור למטה: ",
     ["Whatsapp"]: "שלום, יש לי שאלה...",
     ["Phone to pay :"]: "מספר טלפון לתשלום (ספיר עוזר) :",
     ["PayWay :"]: "תשלום :",
@@ -92,6 +92,11 @@ export class TranslateServiceService {
     ["are you sure to delete"]: "האם הנך בטוח שברצונך למחוק מהעגלה את ",
     ["item has been removed"]: "הפריט הוסר מהעגלה!",
     ["cancel"]: "ביטול",
+    ["track order"]: "להזמנה שלי",
+    ["order date"]: "תאריך ההזמנה:",
+    ["order status"]: "סטטוס ההזמנה:",
+    ["order details"]: "פרטי ההזמנה:",
+    ["order total"]: "סכום ההזמנה:",
   };
   englishDico: Dictionary<string> = {
     ["price"]: 'price',
@@ -109,7 +114,7 @@ export class TranslateServiceService {
     ["Total: "]: "Total: ",
     ["To Payment :"]: "To Payment :",
     ["Need help? Ask us"]: "Need help? Ask us",
-    ["Payment text"]: "You don't need to pay by credit card via the website, you can pay via one of the following payment platform or by cash on delivery.",
+    ["Payment text"]: "The order will be finally confirmaed after the payment via one of the following payment platform. You can track you order status at anytime. For any question, ask us on Whatsapp, on the link",
     ["Whatsapp"]: "Hi, I have a question ...",
     ["Phone to pay :"]: "Phone number to make payment (Sapir Ozer)",
     ["PayWay :"]: "Payment :",
@@ -180,6 +185,11 @@ export class TranslateServiceService {
     ["are you sure to delete"]: "Are you sure to remove from cart ",
     ["item has been removed"]: "The item has been removed from cart!",
     ["cancel"]: "Cancel",
+    ["track order"]: "View my order",
+    ["order date"]: "Order Date:",
+    ["order status"]: "Order Status:",
+    ["order details"]: "Order Details:",
+    ["order total"]: "Order Total:",
   };
   public currentLanguage: LanguageEnum = LanguageEnum.English;
   

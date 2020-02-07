@@ -25,7 +25,8 @@ export class PaymentMethodsComponent implements OnInit {
     public httpService: HttpServiceService,
     public translateService: TranslateServiceService,
     public langService: TranslateServiceService,
-    @Inject(DOCUMENT) private document: Document) { 
+    @Inject(DOCUMENT) private document: Document,
+    private router: Router) { 
       this.total = this.data.total;
     }
 
@@ -37,6 +38,11 @@ export class PaymentMethodsComponent implements OnInit {
 
   private goToUrl(url: string): void {
     window.open(url);
+  }
+
+  toMyOrder(): void {
+    this.dialogRef.close();
+    this.router.navigateByUrl('account');
   }
 
   private getMobileOperatingSystem() : string{

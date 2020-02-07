@@ -8,4 +8,5 @@ export class OrderModel {
     public user: UserModel;
     public orderItem: ItemModel[] = [];
     public status: OrderStatusEnum;
+    public total: number;
 }

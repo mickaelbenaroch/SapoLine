@@ -2,9 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { TranslateServiceService } from 'src/app/services/translate/translate-service.service';
 import { LanguageEnum } from 'src/app/enums/language-enum';
 import { LoginModel } from 'src/app/models/LoginModel';
-import { AuthServiceService } from 'src/app/services/authentication/auth-service.service';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AuthStatusEnum } from 'src/app/enums/auth-status-enum';
 import { Router } from '@angular/router';
 
 @Component({
@@ -91,15 +90,25 @@ export class LoginPageComponent implements OnInit {
   completeSignUp(): void {
     if (this.loginModel && this.loginModel.password && this.loginModel.email) {
       if (!this.noRedirect) {
-        this.authService.signUp(this.loginModel);
+        this.authService.signUp(this.loginModel, this.noRedirect).subscribe(res => {
+          if (res) {
+            this.close(res);
+          } else {
+            this.close(false);
+          }
+        })
       }
-      this.close();
     }
   }
   completeSignIn(): void {
     if (this.loginModel && this.loginModel.password && this.loginModel.email) {
-      this.authService.signin(this.loginModel);
-      this.close();
+      this.authService.signin(this.loginModel, this.noRedirect).subscribe(res => {
+        if (res) {
+          this.close(res);
+        } else {
+          this.close(false);
+        }
+      })
     }
   }
   close(param? :any) {

@@ -10,6 +10,9 @@
         <img class="pay" src="/assets/images/bit.jpeg" (click)="bit()"/>
     </footer>
     <div class="phone">{{langService.translate('Phone to pay :')}} <span>{{phoneToPay}}</span></div>
+    <div class="my-orders">
+        <button (click)="toMyOrder()">{{langService.translate('track order')}}</button>
+    </div>
     <section>
         <span>{{langService.translate('Need help? Ask us')}}</span>
         <img class="whatsapp" src="/assets/images/whatsapp.jpeg" (click)="whatsapp()"/>

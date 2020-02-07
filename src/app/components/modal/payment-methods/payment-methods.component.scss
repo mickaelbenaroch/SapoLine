@@ -65,3 +65,13 @@ section {
     border-radius: 5px;
     font-size: 25px;
 }
+
+.my-orders {
+    text-align: center;
+    border: none;
+    padding: 0.5rem;
+    button {
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}

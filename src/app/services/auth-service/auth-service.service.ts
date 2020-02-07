@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { LoginModel } from 'src/app/models/LoginModel';
-import { HttpServiceService } from '../http-service/http-service.service';
+import { HttpServiceService } from 'src/app/services/http-service/http-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { GeneralDialogPopupComponent } from 'src/app/components/modal/general/general-dialog-popup/general-dialog-popup.component';
 import { Router } from '@angular/router';
@@ -8,7 +8,6 @@ import { AuthStatusEnum } from 'src/app/enums/auth-status-enum';
 import { BuyModalComponent } from 'src/app/components/modal/buy-modal/buy-modal/buy-modal.component';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { UserModel } from 'src/app/models/UserModel';
 
 
 @Injectable({
@@ -27,9 +26,10 @@ export class AuthServiceService implements OnInit {
 
   }
 
-  signin(user: LoginModel, noRedirect?): void {
+  signin(user: LoginModel, noRedirect?): Observable<boolean> {
     if (user && user.email && user.password) {
-      this.httpService.httpPost('login/signin', user).subscribe((res: any) => {
+      return this.httpService.httpPost('login/signin', user).pipe(map(
+        (res: any) => {
         if (res && res.isValid && res.data && res.data.token) {
           this.token = res.data.token;
           this.exp = res.data.maxAge;
@@ -37,19 +37,25 @@ export class AuthServiceService implements OnInit {
           if (!noRedirect) {
             this.openBuyPopup();
           }
+          return true;
         } else {
           this.openErrorModal();
+          return false;
         }
       }, err => {
         this.openErrorModal();
-      });
-    } 
+        return false;
+      }));
+    } else {
+      return of(null);
+    }
   } 
 
-  signUp(user: LoginModel, noRedirect?): void {
+  signUp(user: LoginModel, noRedirect?): Observable<boolean> {
     if (user && user.email && user.password) {
       this.loginModel.email = user.email;
-      this.httpService.httpPost('login/newuser', user).subscribe((res: any) => {
+      return this.httpService.httpPost('login/newuser', user).pipe(map(
+        (res: any) => {
         if (res && res.isValid && res.user && res.user.token) {
           this.token = res.user.token;
           this.exp = res.user.maxAge;
@@ -57,15 +63,19 @@ export class AuthServiceService implements OnInit {
           if (!noRedirect) {
             this.openBuyPopup();
           }
+          return true;
         } else {
           if (res && !res.isValid) {
             this.openErrorModal(res.error);
+            return false;
           }
         }
       }, err => {
         this.openErrorModal();
-      });
-    } 
+        return false;
+    }))} else {
+      return of(null)
+    }
   }
 
   openErrorModal(message?: string): void {
@@ -92,7 +102,7 @@ export class AuthServiceService implements OnInit {
 
   getAuthStatus(): AuthStatusEnum {
     let status: AuthStatusEnum = AuthStatusEnum.Unauthorized;
-    if (!this.token) {
+    if (!sessionStorage.getItem('token') || !sessionStorage.getItem('email')) {
       status = AuthStatusEnum.Unauthorized;
       return status;
     } else {
@@ -102,10 +112,8 @@ export class AuthServiceService implements OnInit {
   }
 
   saveAuthDetails(user): void {
-    if (this.token && this.exp) {
       sessionStorage.setItem('token',this.token);
       sessionStorage.setItem('email', user.email);
-    }
   }
 
   getUserEmail(): string {

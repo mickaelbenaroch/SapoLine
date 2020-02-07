@@ -22,4 +22,29 @@
         </section>
       </div>
     </div>
+    <div [ngClass]="{'hebrew': this.langService.currentLanguage === this.languageEnum.English}">
+      <div  class="single-order" *ngFor="let order of myOrders">
+        <div class="order-row">
+          <div class="order-label">{{langService.translate('order date')}}</div>
+          <div>{{order.date}}</div>
+        </div>
+        <div class="order-row">
+          <div class="order-label">{{langService.translate('order status')}}</div>
+          <div>{{order.status}}</div>
+        </div>
+        <div class="order-row">
+          <div class="order-label">{{langService.translate('order total')}}</div>
+          <div>{{order.total}}
+              <span *ngIf="langService.currentLanguage === languageEnum.Hebrew">NIS</span>
+              <span *ngIf="langService.currentLanguage === languageEnum.English">₪</span>              
+          </div>
+        </div>
+        <div class="order-row"  >
+          <div class="order-label">{{langService.translate('order details')}}</div>
+          <div>
+            <div *ngFor="let item of order.orderItem">{{item.name }} , {{item.price}} , {{item.choosedSize}} , {{item.choosedColor}} , {{item.quantity}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>

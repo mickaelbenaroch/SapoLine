@@ -37,6 +37,7 @@ export class ItemDetailComponent implements OnInit {
     }
     this.splitSizes();
     this.splitcColors();
+    this.currentItem.choosedColor = this.colors[0];
     this.splitPictures();
     if (this.currentItem) {
       this.currentItem.choosedSize = this.sizes[0];

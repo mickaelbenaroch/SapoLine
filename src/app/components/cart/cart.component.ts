@@ -6,7 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { LanguageEnum } from 'src/app/enums/language-enum';
 import { LoginPageComponent } from '../modal/login-page/login-page.component';
-import { AuthServiceService } from 'src/app/services/authentication/auth-service.service';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 import { AuthStatusEnum } from 'src/app/enums/auth-status-enum';
 import { OrderServiceService } from 'src/app/services/order/order-service.service';
 import { ModalModel } from 'src/app/models/ModalModel';
